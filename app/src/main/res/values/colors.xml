@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--    <color name="colorPrimary">#8B603C</color>-->
+    <!--    <color name="colorPrimaryDark">#544918</color>-->
+    <!--    <color name="colorAccent">#FF4081</color>-->
+    <!--    <color name="Toolbar">#01085E</color>-->
+    <!--    <color name="background">#0DFF6A</color>-->
+    <!--    <color name="textcolor">#004D40</color>-->
+    <!--    <color name="tabBackground">#311470</color>-->
+    <!--    <color name="textColorHint">#80CBC4</color>-->
+    <!--    <color name="underlineColor">#8D6E63</color>-->
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="Toolbar">#01085E</color>
+    <color name="background">#0DFF6A</color>
+    <color name="textcolor">#004D40</color>
+    <color name="tabBackground">#311470</color>
+    <color name="textColorHint">#80CBC4</color>
+    <color name="underlineColor">#8D6E63</color>
+</resources>

@@ -1,0 +1,2 @@
+# P.e.t.s
+this app will let you sell your pet or buy a new pet, if you decide that you don't want your pet you can sell it and get money All you need to do is to take some pictures of your pet and some information and will be good to go, people in your area will see the ad and will contact you to buy your pet, the same if you decide to buy a new pet you will find people around you putting their pets.

@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    tools:context="com.example.fady.uspets.RegistrationModule.RegistrationActivity">
+
+    <Button
+        android:id="@+id/btnSignUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/sign_up_button"
+        android:paddingLeft="50dp"
+        android:paddingRight="50dp"
+        android:text="Sign Up"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toBottomOf="@+id/linearLayout2"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/linearLayout2" />
+
+    <ImageView
+        android:id="@+id/ivRegister"
+        android:layout_width="@dimen/register_imageview_width"
+        android:layout_height="@dimen/register_imageview_height"
+        android:layout_marginTop="32dp"
+        android:gravity="center"
+        android:src="@drawable/regist"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar" />
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:background="@drawable/registration_border"
+        android:orientation="vertical"
+        android:paddingTop="10dp"
+        android:paddingBottom="45dp"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/guideline"
+        app:layout_goneMarginTop="-40dp">
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/etName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:hint="Your Name"
+            android:singleLine="true"
+            android:textSize="14sp"
+            app:met_floatingLabel="normal"
+            app:met_floatingLabelText="Name"
+            app:met_iconLeft="@drawable/ic_face_black_24dp" />
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/etEmail"
+            android:layout_width="match_parent"
+
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
+            android:singleLine="true"
+            android:textSize="14sp"
+            app:met_floatingLabel="normal"
+            app:met_floatingLabelText="Email"
+            app:met_iconLeft="@drawable/ic_mail_black_24dp" />
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/etPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:hint="Your Password"
+            android:inputType="textPassword"
+            android:singleLine="true"
+            android:textSize="14sp"
+            app:met_floatingLabel="normal"
+            app:met_floatingLabelText="Password"
+            app:met_iconLeft="@drawable/ic_lock_black_24dp" />
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/etPhone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:hint="Phone"
+            android:inputType="phone"
+            android:singleLine="true"
+
+            android:textSize="14sp"
+            app:met_floatingLabel="normal"
+
+            app:met_floatingLabelText="Phone"
+            app:met_iconLeft="@drawable/ic_phone_black_24dp" />
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:id="@+id/tvSignIn"
+        android:text="@string/signIn"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        android:textStyle="italic"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnSignUp" />
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        app:layout_constraintBottom_toTopOf="@id/linearLayout2"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:titleTextAppearance="@style/signUpToolbarStyle" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="203dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>

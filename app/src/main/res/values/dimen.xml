@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="register_imageview_marginTop">20dp</dimen>
+    <dimen name="register_imageview_height">160dp</dimen>
+    <dimen name="register_imageview_width">150dp</dimen>
+    <dimen name="register_imageview_marginBottom">-49dp</dimen>
+    <dimen name="register_editText_marginTop">6dp</dimen>
+
+
+
+    <!--my profile Activity-->
+    <dimen name="myprofile_image_width">110dp</dimen>
+    <dimen name="myprofile_image_height">110dp</dimen>
+    <dimen name="myprofile_image_marginTop">12dp</dimen>
+    <dimen name="layout_margin">10dp</dimen>
+
+    <dimen name="myprofile_layout_marginLeft">15dp</dimen>
+    <!--pet Details Activity-->
+    <dimen name="petImage_height">280dp</dimen>
+    <dimen name="petDetails_layout_margin">20dp</dimen>
+    <dimen name="petDetails_layoutText_margin">10dp</dimen>
+    <dimen name="petDetails_userImage">80dp</dimen>
+    <dimen name="petDetails_RatingBar">12dp</dimen>
+    <dimen name="petDetails_desc">8dp</dimen>
+
+
+
+    <dimen name="viewProfile_userTextSize">18sp</dimen>
+    <dimen name="viewProfile_margin">10dp</dimen>
+    <dimen name="viewProfile_layout_margin">20dp</dimen>
+    <dimen name="viewprofile_image_width">90dp</dimen>
+    <dimen name="viewprofile_image_height">100dp</dimen>
+
+    <dimen name="cardview_image_height">57dp</dimen>
+    <dimen name="cardview_petType_textSize">24sp</dimen>
+    <dimen name="cardview_image_width">57dp</dimen>
+    <dimen name="cardview_layout_height">200dp</dimen>
+    <dimen name="cardview_margin">6dp</dimen>
+    <dimen name="cardview_petDate_marginTop">10dp</dimen>
+    <dimen name="cardview_titleInfo_size">18sp</dimen>
+    <dimen name="cardview_petInfo_size">16sp</dimen>
+
+
+    <dimen name="signIn_editText_marginTop">18dp</dimen>
+    <dimen name="signIn_editText_marginLeft">6dp</dimen>
+    <dimen name="signIn_editText_marginRight">30dp</dimen>
+    <dimen name="signIn_button_padding">10dp</dimen>
+
+
+    <dimen name="createAd_button_padding">26dp</dimen>
+    <dimen name="createAd_button_margin">20dp</dimen>
+    <dimen name="createAd_imageViewIcon_width">50dp</dimen>
+    <dimen name="createAd_imageViewIcon_height">50dp</dimen>
+    <dimen name="createAd_imageViewIcon_margin">10dp</dimen>
+    <dimen name="createAd_petImageView_width">100dp</dimen>
+    <dimen name="createAd_petImageView_height">80dp</dimen>
+    <dimen name="createAd_petImageView_margin">3dp</dimen>
+    <dimen name="createAd_firstLayout_paddingLeft">6dp</dimen>
+    <dimen name="createAd_elevation">10dp</dimen>
+    <dimen name="createAd_firstLayout_paddingRight">20dp</dimen>
+    <dimen name="createAd_firstLayout_paddingTop">10dp</dimen>
+    <dimen name="createAd_secondLayout_marginTop">20dp</dimen>
+    <dimen name="createAd_secondLayout_paddingRight">10dp</dimen>
+    <dimen name="createAd_secondLayout_paddingTop">7dp</dimen>
+    <dimen name="createAd_layoutWidth">330dp</dimen>
+    <dimen name="createAd_editText_marginBottom">10dp</dimen>
+    <dimen name="createAd_spinnerHeight">30dp</dimen>
+
+
+    <dimen name="messageCard_button_paddingHorizontal">20dp</dimen>
+    <dimen name="messageCard_layout_padding">15dp</dimen>
+    <dimen name="messageCard_textSize">16sp</dimen>
+    <dimen name="messageCard_buttonPadding">16dp</dimen>
+
+    <dimen name="widget_textSize">16sp</dimen>
+    <dimen name="widget_textview_margin">5dp</dimen>
+
+
+
+</resources>

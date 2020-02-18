@@ -1,0 +1,210 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background">
+
+    <LinearLayout xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="30dp"
+        android:orientation="vertical"
+        android:paddingBottom="20dp"
+        tools:context="com.example.foda_.pets_sales_project.Create_Ad">
+
+        <LinearLayout
+            android:layout_width="@dimen/createAd_layoutWidth"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/custom_shape"
+            android:elevation="@dimen/createAd_elevation"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/createAd_firstLayout_paddingLeft"
+            android:paddingTop="@dimen/createAd_firstLayout_paddingTop"
+            android:paddingRight="@dimen/createAd_firstLayout_paddingRight">
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/etPetName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/createAd_editText_marginBottom"
+                android:hint="@string/createAd_petName_hint"
+                android:singleLine="true"
+                app:met_floatingLabelText="string/createAd_petName_hint"
+                app:met_iconLeft="@drawable/name"
+                app:met_iconPadding="0dp"
+                app:met_underlineColor="@color/underlineColor" />
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/etPetAge"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/createAd_editText_marginBottom"
+                android:hint="@string/createAd_petAge_hint"
+                android:singleLine="true"
+                app:met_floatingLabelText="string/createAd_petAge_hint"
+                app:met_iconLeft="@drawable/ic_av_timer_black_24dp"
+                app:met_iconPadding="0dp"
+                app:met_underlineColor="@color/underlineColor" />
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/etPetPrice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/createAd_editText_marginBottom"
+                android:hint="@string/createAd_petPrice_hint"
+                android:imeOptions="actionDone"
+                android:singleLine="true"
+                app:met_floatingLabelText="string/createAd_petPrice_hint"
+                app:met_iconLeft="@drawable/dollars"
+                app:met_iconPadding="3dp"
+                app:met_underlineColor="@color/underlineColor" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="@dimen/createAd_layoutWidth"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/createAd_secondLayout_marginTop"
+            android:background="@drawable/custom_shape"
+            android:elevation="@dimen/createAd_elevation"
+            android:orientation="horizontal"
+            android:paddingTop="@dimen/createAd_secondLayout_paddingTop"
+            android:paddingRight="@dimen/createAd_secondLayout_paddingRight">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:padding="8dp"
+                android:text="@string/createAd_petTypeTextview"
+                android:textSize="@dimen/text_size" />
+
+            <Spinner
+                android:id="@+id/spPetType"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/createAd_spinnerHeight"
+                android:layout_gravity="center"
+                android:layout_marginLeft="40dp"
+                android:background="@drawable/custom_spinner"
+                android:gravity="center"></Spinner>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="@dimen/createAd_layoutWidth"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/custom_shape"
+            android:elevation="@dimen/createAd_elevation"
+            android:orientation="horizontal"
+            android:paddingTop="7dp"
+            android:paddingRight="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="8dp"
+                android:text="@string/pet_gender_textview"
+                android:textSize="@dimen/text_size" />
+
+            <Spinner
+                android:id="@+id/spPetGender"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/createAd_spinnerHeight"
+                android:layout_gravity="center"
+                android:layout_marginLeft="30dp"
+                android:background="@drawable/custom_spinner"></Spinner>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="@dimen/createAd_layoutWidth"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/custom_shape"
+            android:elevation="@dimen/createAd_elevation"
+            android:orientation="vertical"
+            android:paddingRight="10dp"
+            android:paddingBottom="10dp">
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/etPetDesc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/createAd_petDesc_hint"
+                android:imeOptions="actionDone"
+                android:inputType="textMultiLine"
+                android:maxLines="2"
+                android:scrollHorizontally="false"
+                android:singleLine="false"
+                app:met_floatingLabelText="string/createAd_petDesc_hint"
+                app:met_helperText="@string/createAd_descHelperText"
+                app:met_iconLeft="@drawable/ic_description_black_24dp"
+                app:met_iconPadding="0dp"
+                app:met_maxCharacters="70" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="@dimen/createAd_layoutWidth"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+
+            android:background="@drawable/custom_shape"
+            android:elevation="@dimen/createAd_elevation"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textview2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:padding="7dp"
+                android:text="@string/createAd_petPic"
+                android:textSize="@dimen/text_size" />
+
+
+            <ImageView
+                android:id="@+id/imgPetPic"
+                android:layout_width="@dimen/createAd_petImageView_width"
+                android:layout_height="@dimen/createAd_petImageView_height"
+                android:layout_marginTop="@dimen/createAd_petImageView_margin"
+                android:layout_marginBottom="@dimen/createAd_petImageView_margin"
+                android:layout_toRightOf="@+id/textview2"
+                android:background="@android:color/transparent"
+                android:contentDescription="@string/petImage_contentdesc"
+                android:scaleType="fitXY" />
+
+            <ImageButton
+                android:id="@+id/btnImgSelect"
+                android:layout_width="@dimen/createAd_imageViewIcon_width"
+                android:layout_height="@dimen/createAd_imageViewIcon_height"
+                android:layout_alignParentRight="true"
+                android:layout_margin="@dimen/createAd_imageViewIcon_margin"
+                android:background="@drawable/gallery"
+                android:contentDescription="@string/selectPetImage"
+                android:scaleType="fitXY"
+                android:textAllCaps="false" />
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/btnShareAd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/createAd_button_margin"
+            android:layout_marginBottom="@dimen/createAd_button_margin"
+            android:background="@drawable/custom_button"
+            android:elevation="@dimen/createAd_elevation"
+            android:paddingLeft="@dimen/createAd_button_padding"
+            android:paddingRight="@dimen/createAd_button_padding"
+            android:text="@string/createAd_share"
+            android:textAllCaps="false"
+            android:textSize="@dimen/bottom_text_size" />
+    </LinearLayout>
+
+
+</ScrollView>

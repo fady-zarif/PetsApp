@@ -1,0 +1,171 @@
+<resources>
+    <string name="app_name">U.S.Pets</string>
+    <string name="app_title">P.e.t.s</string>
+    <string name="signIn"><u>Already have Account? SingIn</u></string>
+    <string name="title_activity_main_screen">MainScreenActivity</string>
+
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_tools">Tools</string>
+    <string name="menu_share">Share</string>
+    <string name="menu_send">Send</string>
+
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="title_activity_my_adds">"My Ads"</string>
+    <string name="title_activity_profile">Profile</string>
+    <string name="title_activity_my_profile">MyProfile</string>
+    <string name="i_have_account"><u>I Already have Account</u></string>
+    <string name="title_activity_main22">Main22Activity</string>
+    <string name="title_activity_pet_information">PetInformation</string>
+    <string name="title_activity_main">P.e.t.s</string>
+    <string name="NoData">No Messages</string>
+
+    <string name="selectPic">Please select pet picture</string>
+    <string name="progress_dialog">Loading...</string>
+    <string name="userImage_contentdesc">User Pic</string>
+    <string name="myImage_contentdesc">My picture</string>
+    <string name="petImage_contentdesc">Pet Image</string>
+
+
+    <string name="title_activity_messages">My Messages</string>
+    <string name="viewpager_tab1">Advertisement</string>
+    <string name="viewpager_tab2">Create Ad </string>
+    <string name="required_error">Required! </string>
+    <string name="submit_rate_dialog">Submiting Your Rate </string>
+    <string name="select_country"> Please Select your Country </string>
+    <string name="select_rate_error">Please Select Rate First </string>
+    <string name="password_error">Must be At Least 8 char </string>
+
+
+    <string name="email_textview">Email: </string>
+    <string name="user_email">exampl@ex.com</string>
+    <string name="rating_textview">Rating: </string>
+    <string name="name_textview">Name: </string>
+    <string name="phone_textview">Phone: </string>
+    <string name="submit_button">Submit Changes</string>
+    <string name="description_textview">Description: </string>
+
+
+    <string name="price_textview">Price: </string>
+    <string name="pet_gender_textview">Gender: </string>
+    <string name="pet_Age_textview">Age: </string>
+    <string name="viewProfile_ratePets">Rate his Pets   </string>
+    <string name="viewProfile_hint">If you bought from him before</string>
+    <string name="viewProfile_submit">Submit</string>
+
+    <string name="register_signUp">Sign Up</string>
+    <string name="register_name_hint">Full Name</string>
+    <string name="register_email_hint">Email</string>
+    <string name="register_phone_hint">Phone Number</string>
+    <string name="register_password_hint">Password</string>
+
+    <string name="signIn_email_hint">Email</string>
+    <string name="signIn_password_hint">Password</string>
+    <string name="signIn_title">Sign In</string>
+    <string name="signIn_loginButton">Log In</string>
+
+    <string name="createAd_petName_hint">Pet Name </string>
+    <string name="createAd_petAge_hint">Age in Monthes</string>
+    <string name="createAd_petPrice_hint">Price in Dollars</string>
+    <string name="createAd_petDesc_hint">Short description</string>
+    <string name="createAd_petPic">Pet Picture : </string>
+    <string name="createAd_petTypeTextview">Type: </string>
+    <string name="createAd_share">Share</string>
+    <string name="createAd_descHelperText">Maximum 70 Character</string>
+
+    <string name="messageCard_viewProfile">View Profile</string>
+    <string name="messagedialog_message_hint">Message..</string>
+    <string name="messagedialog_sendMessage">Send</string>
+
+    <string name="navDrawer_profile">Profile</string>
+    <string name="navDrawer_messages">My Messages</string>
+    <string name="navDrawer_ads">My Advertisment</string>
+    <string name="navDrawer_logout">Log Out</string>
+    <string-array name="pet_type">
+        <item>Cat</item>
+        <item>Dog</item>
+        <item>Bird</item>
+        <item>Hamster</item>
+    </string-array>
+
+    <string-array name="pet_gender">
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
+
+    <string name="signIn_dialog_message">Signing you in .. </string>
+    <string name="signUp_toast">Congratulation !
+
+ Account Successfully Created</string>
+    <string name="message_sent">Message Sent</string>
+
+    <string name="notificationMessage">one of your Ads has been viewed :) </string>
+    <string name="notificationTitle">P.e.t.s</string>
+    <string name="petDetailsPrice"> EGP</string>
+    <string name="petDetailsMonth"> Month</string>
+
+    <string name="notificationBundle">notificationToken</string>
+    <string name="notificationTag">sendNotification_tag</string>
+
+    <string name="floatingButtonPhone">tel</string>
+    <string name="floatingButtonMail">mailto:</string>
+
+    <string name="petMaxmizeImage">Pet Image</string>
+    <string name="splshImage">P.e.t.s</string>
+    <string name="registerImage">Register</string>
+    <string name="navDrawer">Contact with seller</string>
+    <string name="navDrawerPhone">Call seller</string>
+    <string name="navDrawerMail">Send E-mail to seller</string>
+    <string name="selectPetImage">Select Pet Image</string>
+
+
+    <string name="petTypeTextView">Type: </string>
+    <string name="petPriceTextView">Price: </string>
+    <string name="petDescTextView">Description: </string>
+    <string name="petAgeTextView">Age: </string>
+
+
+    <string name="bundleWidgetId">bundle</string>
+    <string name="petParcelableArrayListId">hello</string>
+    <string name="sendEmailDialogTitle">Send Email Via </string>
+
+    <string name="storageImagePath">images/</string>
+    <string name="petPriceCurrency"> L.E</string>
+
+    <string name="dateFormat">dd-MMM-yyyy</string>
+    <string name="timeFormat">hh:mm aa</string>
+
+
+    //// Profile Activity Strings
+    <string name="userName">Name:</string>
+    <string name="userPhoneNum">Phone:</string>
+    <string name="userEmailAddress">Email:</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    <string name="email_error_message">Email cant be empty</string>
+    <string name="password_error_message">Password cant be empty</string>
+
+
+
+    <string name="userUploadedFailed">User Uploaded Failed</string>
+    <string name="userUploadedSuccessfully">User Uploaded Successfully</string>
+    <string name="userLoginFailed">User Login failed"</string>
+
+    <string name="tvNameError">"Name Cant be empty"</string>
+    <string name="tvPriceError">"Price Cant be empty"</string>
+    <string name="tvAgeError">"Age Cant be empty"</string>
+    <string name="tvDescError">"Description Cant be empty"</string>
+    <string name="imgError">"Image Cant be empty"</string>
+</resources>

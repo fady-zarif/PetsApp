@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "411127084357",
+    "firebase_url": "https://uspets-d89e0.firebaseio.com",
+    "project_id": "uspets-d89e0",
+    "storage_bucket": "uspets-d89e0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:411127084357:android:8dd006fee839b30132ba2c",
+        "android_client_info": {
+          "package_name": "com.example.fady.uspets"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "411127084357-c41o393559vev0b1s3ud3s43alocsslb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBJWk3BqaR0DUqZLiilhGTTW3ywCahop1A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "411127084357-c41o393559vev0b1s3ud3s43alocsslb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
