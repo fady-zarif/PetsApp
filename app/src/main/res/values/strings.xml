@@ -158,7 +158,6 @@
     <string name="password_error_message">Password cant be empty</string>
 
 
-
     <string name="userUploadedFailed">User Uploaded Failed</string>
     <string name="userUploadedSuccessfully">User Uploaded Successfully</string>
     <string name="userLoginFailed">User Login failed"</string>
@@ -167,5 +166,5 @@
     <string name="tvPriceError">"Price Cant be empty"</string>
     <string name="tvAgeError">"Age Cant be empty"</string>
     <string name="tvDescError">"Description Cant be empty"</string>
-    <string name="imgError">"Image Cant be empty"</string>
+    <string name="imgError">"You have to select one pic at least"</string>
 </resources>

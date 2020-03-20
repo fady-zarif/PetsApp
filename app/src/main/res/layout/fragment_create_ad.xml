@@ -144,13 +144,15 @@
                 app:met_helperText="@string/createAd_descHelperText"
                 app:met_iconLeft="@drawable/ic_description_black_24dp"
                 app:met_iconPadding="0dp"
-                app:met_maxCharacters="70" />
+                app:met_maxCharacters="70"
+                app:met_singleLineEllipsis="true" />
         </LinearLayout>
 
         <RelativeLayout
             android:layout_width="@dimen/createAd_layoutWidth"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
+            android:visibility="gone"
             android:layout_marginTop="20dp"
 
             android:background="@drawable/custom_shape"
@@ -188,7 +190,21 @@
                 android:contentDescription="@string/selectPetImage"
                 android:scaleType="fitXY"
                 android:textAllCaps="false" />
+
         </RelativeLayout>
+
+        <com.example.imagepickercomp.PickMediaView
+            android:id="@+id/pickMediaView"
+            android:layout_width="match_parent"
+            android:background="@drawable/pick_image_border"
+            android:layout_height="250dp"
+            android:layout_margin="20dp"
+            android:layout_marginTop="20dp"
+            app:editMenuColor="#442045"
+            android:padding="4dp"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="0dp" />
+
 
         <Button
             android:id="@+id/btnShareAd"
@@ -199,11 +215,12 @@
             android:layout_marginBottom="@dimen/createAd_button_margin"
             android:background="@drawable/custom_button"
             android:elevation="@dimen/createAd_elevation"
-            android:paddingLeft="@dimen/createAd_button_padding"
-            android:paddingRight="@dimen/createAd_button_padding"
+            android:paddingLeft="@dimen/createAd_button_paddingleftright"
+            android:paddingRight="@dimen/createAd_button_paddingleftright"
             android:text="@string/createAd_share"
             android:textAllCaps="false"
-            android:textSize="@dimen/bottom_text_size" />
+            android:textColor="@android:color/white"
+            android:textSize="17sp" />
     </LinearLayout>
 
 

@@ -1,7 +1,6 @@
 package com.example.fady.uspets.MainScreenModule.CreateAdModule;
 
 import android.app.Activity;
-import android.graphics.Bitmap;
 
 import com.example.fady.uspets.MainScreenModule.AdvertismentModule.*;
 
@@ -30,7 +29,7 @@ public interface ICreateAd {
     }
 
     interface IPresenter {
-        void onShareAdClicked(AdvertisementModel advertisementModel, Bitmap bitmap);
+        void onShareAdClicked(AdvertisementModel advertisementModel);
 
         boolean isStoragePermissionGranted(Activity context);
 

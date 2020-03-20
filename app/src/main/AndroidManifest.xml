@@ -9,17 +9,20 @@
     <application
         android:name=".PetApp"
         android:allowBackup="true"
-
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".profilemodule.ProfileActivity"
+        <activity android:name=".PetDetailsModule.Main2Activity"></activity>
+        <activity
+            android:name=".PetDetailsModule.PetDetailsActiviy"
             android:parentActivityName=".MainScreenModule.MainScreenActivity"
-            android:theme="@style/Theme.AppCompat">
-
-        </activity>
+           />
+        <activity
+            android:name=".profilemodule.ProfileActivity"
+            android:parentActivityName=".MainScreenModule.MainScreenActivity"
+            android:theme="@style/profileToolbarStyle" />
         <activity
             android:name=".SplashScreen.SplashScreenActivity"
             android:theme="@style/AppTheme.NoActionBar">

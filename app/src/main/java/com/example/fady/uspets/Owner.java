@@ -1,12 +1,46 @@
 package com.example.fady.uspets;
 
-public class Owner {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Owner implements Parcelable {
     String oUid;
     String oName;
     String oEmail;
     String oPassword;
     String oPhone;
     String oPhoto;
+
+    protected Owner(Parcel in) {
+        oUid = in.readString();
+        oName = in.readString();
+        oEmail = in.readString();
+        oPassword = in.readString();
+        oPhone = in.readString();
+        oPhoto = in.readString();
+        if (in.readByte() == 0) {
+            oRating = null;
+        } else {
+            oRating = in.readLong();
+        }
+        if (in.readByte() == 0) {
+            oRateNum = null;
+        } else {
+            oRateNum = in.readLong();
+        }
+    }
+
+    public static final Creator<Owner> CREATOR = new Creator<Owner>() {
+        @Override
+        public Owner createFromParcel(Parcel in) {
+            return new Owner(in);
+        }
+
+        @Override
+        public Owner[] newArray(int size) {
+            return new Owner[size];
+        }
+    };
 
     public Long getoRating() {
         return oRating;
@@ -103,5 +137,32 @@ public class Owner {
 
     public void setoPhoto(String oPhoto) {
         this.oPhoto = oPhoto;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(oUid);
+        dest.writeString(oName);
+        dest.writeString(oEmail);
+        dest.writeString(oPassword);
+        dest.writeString(oPhone);
+        dest.writeString(oPhoto);
+        if (oRating == null) {
+            dest.writeByte((byte) 0);
+        } else {
+            dest.writeByte((byte) 1);
+            dest.writeLong(oRating);
+        }
+        if (oRateNum == null) {
+            dest.writeByte((byte) 0);
+        } else {
+            dest.writeByte((byte) 1);
+            dest.writeLong(oRateNum);
+        }
     }
 }

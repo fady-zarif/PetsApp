@@ -45,12 +45,25 @@
         <item name="android:backgroundDimEnabled">false</item>
         <item name="android:background">@android:color/transparent</item>
     </style>
+    <style name="ThemeActionBar"
+        parent="Widget.AppCompat.Light.ActionBar.Solid">
+        <item name="android:background">@null</item>
+        <!-- Support library compatibility -->
+        <item name="background">@null</item>
+    </style>
 
     <style name="signUpToolbarStyle" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
         <item name="android:textSize">22sp</item>
         <item name="android:color">@android:color/white</item>
     </style>
 
+    
+    <style name="profileToolbarStyle" parent="Theme.AppCompat">
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorPrimary">@color/Toolbar</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
     <style name="AppTheme.NoActionBar.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>

@@ -1,11 +1,15 @@
 package com.example.fady.uspets.MainScreenModule.AdvertismentModule;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.example.fady.uspets.Owner;
 import com.google.firebase.firestore.ServerTimestamp;
 
+import java.util.ArrayList;
 import java.util.Date;
 
-public class AdvertisementModel {
+public class AdvertisementModel implements Parcelable {
     private String ownerUid;
     private String name;
     private String adId;
@@ -14,7 +18,7 @@ public class AdvertisementModel {
     private String description;
     private String age;
     private String price;
-    private String petImage;
+    private ArrayList<String> petImageArrayList;
     @ServerTimestamp
     private Date date;
 
@@ -24,7 +28,7 @@ public class AdvertisementModel {
     public AdvertisementModel() {
     }
 
-    public AdvertisementModel(String ownerUid, String name, String type, String gender, String description, String age, String price, String petImage, Date date, String adId) {
+    public AdvertisementModel(String ownerUid, String name, String type, String gender, String description, String age, String price, ArrayList<String> petImageArrayList, Date date, String adId) {
         this.ownerUid = ownerUid;
         this.name = name;
         this.type = type;
@@ -32,10 +36,55 @@ public class AdvertisementModel {
         this.description = description;
         this.age = age;
         this.price = price;
-        this.petImage = petImage;
+        this.petImageArrayList = petImageArrayList;
         this.date = date;
         this.adId = adId;
     }
+
+
+    protected AdvertisementModel(Parcel in) {
+        ownerUid = in.readString();
+        name = in.readString();
+        adId = in.readString();
+        type = in.readString();
+        gender = in.readString();
+        description = in.readString();
+        age = in.readString();
+        price = in.readString();
+        petImageArrayList = in.createStringArrayList();
+        owner = in.readParcelable(Owner.class.getClassLoader());
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(ownerUid);
+        dest.writeString(name);
+        dest.writeString(adId);
+        dest.writeString(type);
+        dest.writeString(gender);
+        dest.writeString(description);
+        dest.writeString(age);
+        dest.writeString(price);
+        dest.writeStringList(petImageArrayList);
+        dest.writeParcelable(owner, flags);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<AdvertisementModel> CREATOR = new Creator<AdvertisementModel>() {
+        @Override
+        public AdvertisementModel createFromParcel(Parcel in) {
+            return new AdvertisementModel(in);
+        }
+
+        @Override
+        public AdvertisementModel[] newArray(int size) {
+            return new AdvertisementModel[size];
+        }
+    };
 
     public void setOwner(Owner owner) {
         this.owner = owner;
@@ -45,14 +94,14 @@ public class AdvertisementModel {
         return owner;
     }
 
-    public AdvertisementModel(String name, String type, String gender, String description, String age, String price, String petImage, Date date) {
+    public AdvertisementModel(String name, String type, String gender, String description, String age, String price, ArrayList<String> petImageArrayList, Date date) {
         this.name = name;
         this.type = type;
         this.gender = gender;
         this.description = description;
         this.age = age;
         this.price = price;
-        this.petImage = petImage;
+        this.petImageArrayList = petImageArrayList;
         this.date = date;
     }
 
@@ -120,12 +169,12 @@ public class AdvertisementModel {
         this.price = price;
     }
 
-    public String getPetImage() {
-        return petImage;
+    public ArrayList<String> getPetImageArrayList() {
+        return petImageArrayList;
     }
 
-    public void setPetImage(String petImage) {
-        this.petImage = petImage;
+    public void setPetImageArrayList(ArrayList<String> petImageArrayList) {
+        this.petImageArrayList = petImageArrayList;
     }
 
     public Date getDate() {

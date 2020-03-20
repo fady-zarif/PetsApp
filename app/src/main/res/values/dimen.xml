@@ -7,7 +7,6 @@
     <dimen name="register_editText_marginTop">6dp</dimen>
 
 
-
     <!--my profile Activity-->
     <dimen name="myprofile_image_width">110dp</dimen>
     <dimen name="myprofile_image_height">110dp</dimen>
@@ -22,7 +21,6 @@
     <dimen name="petDetails_userImage">80dp</dimen>
     <dimen name="petDetails_RatingBar">12dp</dimen>
     <dimen name="petDetails_desc">8dp</dimen>
-
 
 
     <dimen name="viewProfile_userTextSize">18sp</dimen>
@@ -48,7 +46,8 @@
 
 
     <dimen name="createAd_button_padding">26dp</dimen>
-    <dimen name="createAd_button_margin">20dp</dimen>
+    <dimen name="createAd_button_margin">25dp</dimen>
+    <dimen name="createAd_button_paddingleftright">100dp</dimen>
     <dimen name="createAd_imageViewIcon_width">50dp</dimen>
     <dimen name="createAd_imageViewIcon_height">50dp</dimen>
     <dimen name="createAd_imageViewIcon_margin">10dp</dimen>
@@ -76,5 +75,8 @@
     <dimen name="widget_textview_margin">5dp</dimen>
 
 
+    <dimen name="pet_details_title_text_size">20sp</dimen>
+
+    <dimen name="pet_details_text_size">19sp</dimen>
 
 </resources>

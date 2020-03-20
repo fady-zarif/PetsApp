@@ -3,6 +3,7 @@ package com.example.fady.uspets.FirebaseDatabase;
 import com.example.fady.uspets.Owner;
 import com.google.android.gms.tasks.OnCompleteListener;
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
@@ -14,7 +15,7 @@ import javax.inject.Singleton;
 import static com.example.fady.uspets.FirebaseDatabase.FirebaseConstant.FIRESTORE_USER_REFERENCE;
 
 @Singleton
-public class FirebaseUserClass extends FirebaseBase {
+public class   FirebaseUserClass extends FirebaseBase {
     CollectionReference userRef;
     FirebaseAuth firebaseAuth;
 
@@ -41,8 +42,8 @@ public class FirebaseUserClass extends FirebaseBase {
         getUserRef().document(getCurrentUser().getUid()).get().addOnCompleteListener(onCompleteListener);
     }
 
-    public void getAnyUserInfo(String uid, OnCompleteListener<DocumentSnapshot> onCompleteListener) {
-        getUserRef().document(uid).get().addOnCompleteListener(onCompleteListener);
+    public void getAnyUserInfo(String uid, OnSuccessListener<DocumentSnapshot> successListener) {
+        getUserRef().document(uid).get().addOnSuccessListener(successListener);
     }
 
 

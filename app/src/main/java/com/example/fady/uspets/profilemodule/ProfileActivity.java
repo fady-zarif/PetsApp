@@ -41,9 +41,9 @@ public class ProfileActivity extends UsPetsMainView implements Iprofile.IView {
         setContentView(R.layout.activity_profile);
         ControllerComponent controllerComponent = initDaggerController(this, null);
         controllerComponent.inject(this);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(ContextCompat.getColor(this, R.color.Toolbar)));
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        getSupportActionBar().setDisplayShowHomeEnabled(true);
+//        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(ContextCompat.getColor(this, R.color.Toolbar)));
 
     }
 

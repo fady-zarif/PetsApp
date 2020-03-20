@@ -3,7 +3,9 @@ package com.example.fady.uspets.FirebaseDatabase;
 import com.example.fady.uspets.MainScreenModule.AdvertismentModule.AdvertisementModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import javax.inject.Inject;
@@ -17,7 +19,12 @@ public class FirebaseAdvertismentClass extends FirebaseBase {
     CollectionReference advertismentRef;
 
     public void getAdvertismentList(EventListener<QuerySnapshot> eventListener) {
-        getAdvertismentRef().addSnapshotListener(eventListener);
+        getAdvertismentRef().orderBy("date", Query.Direction.ASCENDING).addSnapshotListener(eventListener);
+    }
+
+    public void getAdvertismentListOnce(OnCompleteListener<QuerySnapshot> onCompleteListener)
+    {
+        getAdvertismentRef().orderBy("date",Query.Direction.ASCENDING).get().addOnCompleteListener(onCompleteListener);
     }
 
     public CollectionReference getAdvertismentRef() {

@@ -22,14 +22,10 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.fady.uspets.ControllerDI.ControllerComponent;
-import com.example.fady.uspets.ControllerDI.ControllerModule;
-import com.example.fady.uspets.ControllerDI.DaggerControllerComponent;
 import com.example.fady.uspets.MainScreenModule.AdvertismentModule.AdvertisementModel;
 import com.example.fady.uspets.MainScreenModule.MainScreenActivity;
 import com.example.fady.uspets.R;
-import com.example.fady.uspets.USPetsMain.CompressionClass;
-
-import java.io.IOException;
+import com.example.imagepickercomp.PickMediaView;
 
 import javax.inject.Inject;
 
@@ -68,12 +64,14 @@ public class CreateAdFragment extends Fragment implements ICreateAd.IView {
 
     @BindView(R.id.btnShareAd)
     Button btnShareAd;
+    @BindView(R.id.pickMediaView)
+    PickMediaView pickMediaView;
 
     @Inject
     CreateAdPresenter iPresenter;
 
     Bitmap bitmap = null;
-    String imageName = "";
+    //    ArrayList<String> imageName = "";
     ICreateAdwithActivityHolder iCreateAdwithActivityHolder;
     ControllerComponent controllerComponent;
 
@@ -96,13 +94,23 @@ public class CreateAdFragment extends Fragment implements ICreateAd.IView {
         spPetType.setAdapter(new ArrayAdapter(getContext(), R.layout.support_simple_spinner_dropdown_item, getResources().getStringArray(R.array.pet_type)));
         spPetGender.setAdapter(new ArrayAdapter(getContext(), R.layout.support_simple_spinner_dropdown_item, getResources().getStringArray(R.array.pet_gender)));
 
+        pickMediaView.handlePickMedia(3, () -> {
+
+            Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
+            intent.setType("image/*");
+            startActivityForResult(intent, PickMediaView.PICK_IMAGE_CODE);
+
+        });
         return view;
     }
 
     @OnClick(R.id.btnImgSelect)
     public void selectImageBtnClick() {
         if (iPresenter.isStoragePermissionGranted(getActivity())) {
-            Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+            Intent intent = new Intent();
+            intent.setType("image/*");
+            intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
+            intent.setAction(Intent.ACTION_GET_CONTENT);
             startActivityForResult(intent, PET_PIC_RESULT_CODE);
         }
     }
@@ -116,9 +124,9 @@ public class CreateAdFragment extends Fragment implements ICreateAd.IView {
                 etPetDesc.getText().toString(),
                 etPetAge.getText().toString(),
                 etPetPrice.getText().toString(),
-                imageName,
+                pickMediaView.getImagesArrayList(),
                 null);
-        iPresenter.onShareAdClicked(advertisementModel, bitmap);
+        iPresenter.onShareAdClicked(advertisementModel);
 
     }
 
@@ -186,18 +194,20 @@ public class CreateAdFragment extends Fragment implements ICreateAd.IView {
         if (resultCode == RESULT_OK) {
             if (requestCode == PET_PIC_RESULT_CODE) {
                 Uri uri = data.getData();
-                bitmap = CompressionClass.compressImage(uri.toString(), getActivity());
+//                bitmap = CompressionClass.compressImage(uri.toString(), getActivity());
 //                try {
-//                    bitmap = MediaStore.Images.Media.getBitmap(this.getContext().getContentResolver(), uri);
-//                } catch (IOException e) {
-//                    e.printStackTrace();
-//                } finally {
-//                    bitmap = CompressionClass.compressImage(uri.toString(), getActivity());
-//
-//                }
-                imgPetPic.setImageBitmap(bitmap);
-                imageName = uri.getLastPathSegment();
+////                    bitmap = MediaStore.Images.Media.getBitmap(this.getContext().getContentResolver(), uri);
+////                } catch (IOException e) {
+////                    e.printStackTrace();
+////                } finally {
+////                    bitmap = CompressionClass.compressImage(uri.toString(), getActivity());
+////
+////                }
+//                imgPetPic.setImageBitmap(bitmap);
+//                imageName = uri.getLastPathSegment();
 
+            } else if (requestCode == PickMediaView.PICK_IMAGE_CODE) {
+                pickMediaView.setDataFromOnResult(data.getData());
             }
         }
     }
@@ -213,4 +223,6 @@ public class CreateAdFragment extends Fragment implements ICreateAd.IView {
         spPetGender.setSelection(0);
 
     }
+
+
 }

@@ -11,6 +11,7 @@ import com.example.fady.uspets.FirebaseDatabase.FirebaseAdvertismentClass;
 import com.example.fady.uspets.FirebaseDatabase.FirebaseUserClass;
 import com.example.fady.uspets.Owner;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentChange;
@@ -52,24 +53,40 @@ public class AdvertisementPresenter implements IAdvertisement.IAdvertismentPrese
                     iAdvertismentView.onRetriveAdvertismentsFailed("No Data");
                     return;
                 }
+//                if (!queryDocumentSnapshots.getMetadata().isFromCache()) {
                 for (DocumentChange documentChange : queryDocumentSnapshots.getDocumentChanges()) {
-                    AdvertisementModel advertisementModel = documentChange.getDocument().toObject(AdvertisementModel.class);
-                    getUserInfo(advertisementModel);
+                    Log.e("HOWMANYDOCS", " aa" + queryDocumentSnapshots.getDocumentChanges().size());
+                    if (documentChange.getType().equals(DocumentChange.Type.ADDED)) {
+                        AdvertisementModel advertisementModel = documentChange.getDocument().toObject(AdvertisementModel.class);
+//                        getUserInfo(advertisementModel);
+                        iAdvertismentView.onRetriveAdvertismentsSuccess(advertisementModel);
+                    }
                 }
 
-            }
-        });
-    }
-
-    private void getUserInfo(AdvertisementModel advertisementModel) {
-        firebaseUserClass.getAnyUserInfo(advertisementModel.getOwnerUid(), task -> {
-            if (task.isSuccessful()) {
-                Owner owner = task.getResult().toObject(Owner.class);
-                advertisementModel.setOwner(owner);
-                iAdvertismentView.onRetriveAdvertismentsSuccess(advertisementModel);
 
             }
         });
     }
 
+    @Override
+    public void onRefreshGetAdvertisement() {
+        getAdvertismentOnce();
+    }
+
+
+    private void getAdvertismentOnce() {
+        advertisementModelArrayList = new ArrayList<>();
+        firebaseAdvertismentClass.getAdvertismentListOnce(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()) {
+                    for (DocumentSnapshot documentSnapshot : task.getResult().getDocuments()) {
+                        AdvertisementModel advertisementModel = documentSnapshot.toObject(AdvertisementModel.class);
+                        iAdvertismentView.onRetriveAdvertismentsSuccess(advertisementModel);
+                    }
+                }
+            }
+        });
+
+    }
 }

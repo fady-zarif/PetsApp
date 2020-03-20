@@ -1,5 +1,6 @@
 package com.example.fady.uspets.MainScreenModule.AdvertismentModule;
 
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -27,7 +28,9 @@ public class AdvertisementAdapter extends RecyclerView.Adapter<AdvertisementAdap
     @Override
     public void onBindViewHolder(@NonNull AdvertisementViewHolder holder, int position) {
         holder.advertisementView.setAdvertismentItem(advertisementModelArrayList.get(position));
-
+        holder.advertisementView.setOnClickListener(v -> {
+            iAdvertismentClick.onAdvertismentClicListner(position);
+        });
     }
 
     @Override

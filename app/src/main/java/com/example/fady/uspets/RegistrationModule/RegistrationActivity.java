@@ -86,38 +86,6 @@ public class RegistrationActivity extends UsPetsMainView implements SignInDialog
 
     @Override
     public void onUserRegisterSuccess() {
-        /**/
-        IRegistration.IView runnable = new IRegistration.IView() {
-            @Override
-            public void onUserRegisterSuccess() {
-
-            }
-
-            @Override
-            public void onUserRegisterFailed() {
-
-            }
-
-            @Override
-            public void onUserLoginSuccess() {
-
-            }
-
-            @Override
-            public void onUserLoginFailed(String errorMessage) {
-
-            }
-
-            @Override
-            public void showUserEmailErrorMessage(String message) {
-
-            }
-
-            @Override
-            public void showPasswordErrorMessage(String message) {
-
-            }
-        };
         dismisProgressView();
         Toast.makeText(this, getString(R.string.userUploadedSuccessfully), Toast.LENGTH_SHORT).show();
     }

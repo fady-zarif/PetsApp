@@ -20,6 +20,7 @@ public class SharedPreferencesClass {
         editor = sharedPreferences.edit();
     }
 
+
     public void putStringInPref(String key, String value) {
         editor.putString(key, value);
         editor.apply();

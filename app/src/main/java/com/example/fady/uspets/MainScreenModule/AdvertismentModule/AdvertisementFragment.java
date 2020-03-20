@@ -1,6 +1,7 @@
 package com.example.fady.uspets.MainScreenModule.AdvertismentModule;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -17,6 +18,7 @@ import com.example.fady.uspets.ControllerDI.ControllerComponent;
 import com.example.fady.uspets.ControllerDI.ControllerModule;
 import com.example.fady.uspets.ControllerDI.DaggerControllerComponent;
 import com.example.fady.uspets.MainScreenModule.MainScreenActivity;
+import com.example.fady.uspets.PetDetailsModule.PetDetailsActiviy;
 import com.example.fady.uspets.R;
 
 import java.util.ArrayList;
@@ -30,6 +32,8 @@ import butterknife.ButterKnife;
  * A simple {@link Fragment} subclass.
  */
 public class AdvertisementFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener, IAdvertisement.IAdvertismentView, IAdvertisement.IAdvertismentClick {
+    public static final String ADVERTISEMENT_KEY = "currentAd";
+
     @BindView(R.id.MyRcyclerview)
     RecyclerView rvAdvertisement;
 
@@ -81,10 +85,10 @@ public class AdvertisementFragment extends Fragment implements SwipeRefreshLayou
             @Override
             public void run() {
                 srRefresh.setRefreshing(true);
-                iAdvertismentPresenter.getAdvertisment();
+
                 advertisementModelArrayList.clear();
                 advertisementAdapter.notifyDataSetChanged();
-
+                iAdvertismentPresenter.onRefreshGetAdvertisement();
             }
         });
 
@@ -93,16 +97,19 @@ public class AdvertisementFragment extends Fragment implements SwipeRefreshLayou
 
     @Override
     public void onRetriveAdvertismentsSuccess(AdvertisementModel advertisementModel) {
-//        // TODO: 2020-01-07 remove this two lines .... it should work if new item got added just add this item not the whole items again
-//        advertisementModelArrayList.clear();
-//        advertisementAdapter.notifyDataSetChanged();
-
-
-        advertisementModelArrayList.add(advertisementModel);
+        advertisementModelArrayList.add(0, advertisementModel);
         advertisementAdapter.notifyDataSetChanged();
-        srRefresh.setRefreshing(false);
+        if (srRefresh.isRefreshing())
+            srRefresh.setRefreshing(false);
 
     }
+
+//    @Override
+//    public void onRetriveAdvertismentsOnceSuccess(AdvertisementModel advertisementModel) {
+//        advertisementModelArrayList.add(0, advertisementModel);
+//        advertisementAdapter.notifyDataSetChanged();
+//
+//}
 
     @Override
     public void onRetriveAdvertismentsFailed(String errorMessage) {
@@ -113,6 +120,8 @@ public class AdvertisementFragment extends Fragment implements SwipeRefreshLayou
 
     @Override
     public void onAdvertismentClicListner(int pos) {
-
+        Intent intent = new Intent(getActivity(), PetDetailsActiviy.class);
+        intent.putExtra(ADVERTISEMENT_KEY, advertisementModelArrayList.get(pos));
+        startActivity(intent);
     }
 }

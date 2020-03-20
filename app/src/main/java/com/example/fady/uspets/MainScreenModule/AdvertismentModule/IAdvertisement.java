@@ -4,6 +4,7 @@ public interface IAdvertisement {
     interface IAdvertismentView {
 
         void onRetriveAdvertismentsSuccess(AdvertisementModel advertisementModel);
+//        void onRetriveAdvertismentsOnceSuccess(AdvertisementModel advertisementModel);
 
         void onRetriveAdvertismentsFailed(String errorMessage);
 
@@ -11,6 +12,7 @@ public interface IAdvertisement {
 
     interface IAdvertismentPresenter {
         void getAdvertisment();
+        void onRefreshGetAdvertisement();
     }
 
     interface IAdvertismentClick {

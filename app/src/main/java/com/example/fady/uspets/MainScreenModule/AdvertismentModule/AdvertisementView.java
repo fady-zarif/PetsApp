@@ -13,8 +13,9 @@ import androidx.annotation.Nullable;
 
 import com.example.fady.uspets.Owner;
 import com.example.fady.uspets.R;
-import com.example.fady.uspets.USPetsMain.PetsLogClass;
 import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -64,15 +65,17 @@ public class AdvertisementView extends LinearLayout {
     }
 
     public void setAdvertismentItem(AdvertisementModel advertismentItem) {
-        setImgAdvPet(advertismentItem.getPetImage());
+        if (advertismentItem.getPetImageArrayList() != null)
+            setImgAdvPet(advertismentItem.getPetImageArrayList().get(0));
+
         setPetAge(advertismentItem.getAge());
         setPetType(advertismentItem.getType());
         setTvPetGender(advertismentItem.getGender());
         setTvPetPrice(advertismentItem.getPrice());
-        if (advertismentItem.getOwner() != null) {
-            PetsLogClass.showLogError("OWNEEISHERE", advertismentItem.getOwner().getoUid());
-            setAdOwnerInfo(advertismentItem.getOwner());
-        }
+//        if (advertismentItem.getOwner() != null) {
+//            PetsLogClass.showLogError("OWNEEISHERE", advertismentItem.getOwner().getoUid());
+//            setAdOwnerInfo(advertismentItem.getOwner());
+//        }
     }
 
     public void setAdOwnerInfo(Owner adOwnerInfo) {
