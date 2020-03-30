@@ -152,12 +152,12 @@
             android:layout_width="@dimen/createAd_layoutWidth"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:visibility="gone"
             android:layout_marginTop="20dp"
-
             android:background="@drawable/custom_shape"
+
             android:elevation="@dimen/createAd_elevation"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:visibility="gone">
 
             <TextView
                 android:id="@+id/textview2"
@@ -196,12 +196,13 @@
         <com.example.imagepickercomp.PickMediaView
             android:id="@+id/pickMediaView"
             android:layout_width="match_parent"
-            android:background="@drawable/pick_image_border"
             android:layout_height="250dp"
             android:layout_margin="20dp"
             android:layout_marginTop="20dp"
-            app:editMenuColor="#442045"
+            android:background="@drawable/pick_image_border"
             android:padding="4dp"
+            app:editMenuColor="#442045"
+            app:maxImages="3"
             tools:ignore="MissingConstraints"
             tools:layout_editor_absoluteX="0dp" />
 

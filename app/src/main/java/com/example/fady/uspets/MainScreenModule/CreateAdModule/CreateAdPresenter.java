@@ -74,14 +74,13 @@ public class CreateAdPresenter implements ICreateAd.IPresenter {
         if (!checkAdvertisementData(advertisementModel))
             return;
         iView.showProgressView();
-        String petPicName;
+
         String documentID = CreateAdConstant.generateRandomID();
         advertisementModel.setAdId(documentID);
         advertisementModel.setOwnerUid(PetUiManager.getInstance().getCurrentUser().getoUid());
 
         for (int i = 0; i < advertisementModel.getPetImageArrayList().size(); i++) {
-            petPicName = randomizeName(advertisementModel.getPetImageArrayList().get(i));
-            sendMultiplePhotos(petPicName, getByteArray(advertisementModel.getPetImageArrayList().get(i)), advertisementModel);
+            sendMultiplePhotos(advertisementModel.getPetImageArrayList().get(i), getByteArray(advertisementModel.getPetImageArrayList().get(i)), advertisementModel);
         }
 
 
@@ -126,11 +125,6 @@ public class CreateAdPresenter implements ICreateAd.IPresenter {
     }
 
 
-    private String randomizeName(String s) {
-        Random random = new Random();
-        int x = random.nextInt(99999999);
-        return s + x;
-    }
 
     private boolean checkAdvertisementData(AdvertisementModel advertisementModel) {
         boolean isValid = true;
@@ -161,34 +155,27 @@ public class CreateAdPresenter implements ICreateAd.IPresenter {
     }
 
 
-
     private void sendMultiplePhotos(String imageName, byte[] byteArray, AdvertisementModel advertisementModel) {
-        Observable<Boolean> num = Observable.create(new ObservableOnSubscribe<Boolean>() {
+        Observable<Boolean> observable = Observable.create(new ObservableOnSubscribe<Boolean>() {
             @Override
             public void subscribe(@io.reactivex.rxjava3.annotations.NonNull ObservableEmitter<Boolean> emitter) throws Throwable {
-                firebaseStorageClass.uploadImage("Fady", imageName, byteArray, new OnCompleteListener() {
+                firebaseStorageClass.uploadImage(PET_IMAGES_FOLDER, imageName, byteArray, new OnSuccessListener<Uri>() {
                     @Override
-                    public void onComplete(@NonNull Task task1) {
-                        if (task1.isSuccessful()) {
-                            // TODO: 2020-03-18 change the child .
-                            StorageReference storageReference = FirebaseStorage.getInstance().getReference("Fady").child(imageName);
-                            storageReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                                @Override
-                                public void onSuccess(Uri uri) {
-                                    petImagesArrayList.add(uri.toString());
-                                    emitter.onNext(true);
-                                    emitter.onComplete();
-                                }
-                            });
-                        } else {
-                            iView.dismissProgressView();
-                            emitter.onError(task1.getException());
-                        }
+                    public void onSuccess(Uri uri) {
+                        petImagesArrayList.add(uri.toString());
+                        emitter.onNext(true);
+                        emitter.onComplete();
+                    }
+                }, new FirebaseStorageClass.onError() {
+                    @Override
+                    public void sendError(Exception message) {
+                        iView.dismissProgressView();
+                        emitter.onError(message);
                     }
                 });
             }
         });
-        observableList.add(num);
+        observableList.add(observable);
         Log.e("KOKO", "Observable Added");
 
     }

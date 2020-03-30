@@ -6,6 +6,8 @@ import androidx.fragment.app.Fragment;
 
 import com.example.fady.uspets.Owner;
 
+import javax.inject.Named;
+
 import dagger.Module;
 import dagger.Provides;
 

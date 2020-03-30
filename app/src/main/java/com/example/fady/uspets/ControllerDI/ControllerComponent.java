@@ -3,10 +3,15 @@ package com.example.fady.uspets.ControllerDI;
 import com.example.fady.uspets.ApplicationDI.ApplicationComponent;
 import com.example.fady.uspets.MainScreenModule.AdvertismentModule.AdvertisementFragment;
 import com.example.fady.uspets.MainScreenModule.CreateAdModule.CreateAdFragment;
+import com.example.fady.uspets.PersonalAdModule.PersonalAdActivity;
+import com.example.fady.uspets.PersonalAdModule.PersonalAdPresenter;
 import com.example.fady.uspets.PetDetailsModule.PetDetailsActiviy;
 import com.example.fady.uspets.RegistrationModule.RegistrationActivity;
 import com.example.fady.uspets.SplashScreen.SplashScreenActivity;
+import com.example.fady.uspets.myAdvertisement.MyAdvertisementActivity;
 import com.example.fady.uspets.profilemodule.ProfileActivity;
+
+import org.jetbrains.annotations.NotNull;
 
 import dagger.Component;
 
@@ -26,4 +31,9 @@ public interface ControllerComponent {
 
     void inject(PetDetailsActiviy petDetailsActiviy);
 
+
+
+    void inject(PersonalAdActivity personalAdActivity);
+
+    void inject(@NotNull MyAdvertisementActivity myAdvertisementActivity);
 }

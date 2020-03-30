@@ -20,6 +20,7 @@ class PetDetailsActiviy : UsPetsMainView(), IpetDetails.Iview {
 
     @Inject
     lateinit var ipresenter: PetDetailsPresenter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pet_details_activiy)

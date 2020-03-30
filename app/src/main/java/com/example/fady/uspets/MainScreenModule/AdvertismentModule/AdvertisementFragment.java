@@ -18,8 +18,10 @@ import com.example.fady.uspets.ControllerDI.ControllerComponent;
 import com.example.fady.uspets.ControllerDI.ControllerModule;
 import com.example.fady.uspets.ControllerDI.DaggerControllerComponent;
 import com.example.fady.uspets.MainScreenModule.MainScreenActivity;
+import com.example.fady.uspets.PersonalAdModule.PersonalAdActivity;
 import com.example.fady.uspets.PetDetailsModule.PetDetailsActiviy;
 import com.example.fady.uspets.R;
+import com.example.fady.uspets.USPetsMain.PetUiManager;
 
 import java.util.ArrayList;
 
@@ -91,8 +93,6 @@ public class AdvertisementFragment extends Fragment implements SwipeRefreshLayou
                 iAdvertismentPresenter.onRefreshGetAdvertisement();
             }
         });
-
-
     }
 
     @Override
@@ -120,7 +120,11 @@ public class AdvertisementFragment extends Fragment implements SwipeRefreshLayou
 
     @Override
     public void onAdvertismentClicListner(int pos) {
-        Intent intent = new Intent(getActivity(), PetDetailsActiviy.class);
+        Intent intent;
+        if (advertisementModelArrayList.get(pos).getOwnerUid().equals(PetUiManager.getInstance().getCurrentUser().getoUid()))
+            intent = new Intent(getActivity(), PersonalAdActivity.class);
+        else
+            intent = new Intent(getActivity(), PetDetailsActiviy.class);
         intent.putExtra(ADVERTISEMENT_KEY, advertisementModelArrayList.get(pos));
         startActivity(intent);
     }

@@ -79,4 +79,7 @@
 
     <dimen name="pet_details_text_size">19sp</dimen>
 
+    <dimen name="dimen_18_sp">18sp</dimen>
+    <dimen name="dimen_20_sp">20sp</dimen>
+
 </resources>

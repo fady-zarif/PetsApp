@@ -10,6 +10,7 @@ import com.example.fady.uspets.PetApp;
 import com.example.fady.uspets.R;
 import com.example.fady.uspets.RegistrationModule.RegistrationActivity;
 import com.example.fady.uspets.USPetsMain.UsPetsMainView;
+import com.example.fady.uspets.myAdvertisement.MyAdvertisementActivity;
 import com.example.fady.uspets.profilemodule.ProfileActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
@@ -134,7 +135,7 @@ public class MainScreenActivity extends UsPetsMainView implements NavigationView
         if (id == R.id.navProfile) {
             startActivity(new Intent(MainScreenActivity.this, ProfileActivity.class));
         } else if (id == R.id.navAd) {
-
+            startActivity(new Intent(MainScreenActivity.this, MyAdvertisementActivity.class));
         } else if (id == R.id.navMessage) {
 
         } else if (id == R.id.navLogOut) {

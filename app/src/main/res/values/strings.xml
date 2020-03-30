@@ -167,4 +167,13 @@
     <string name="tvAgeError">"Age Cant be empty"</string>
     <string name="tvDescError">"Description Cant be empty"</string>
     <string name="imgError">"You have to select one pic at least"</string>
+
+
+    /// Personal Advertisment Activity
+    <string name="petName">Name: </string>
+    <string name="dollarSign">$ </string>
+    <string name="petPrice">Price: </string>
+    <string name="petDesc">Description: </string>
+    <string name="petGender">Gender: </string>
+    <string name="updateAd">Update</string>
 </resources>

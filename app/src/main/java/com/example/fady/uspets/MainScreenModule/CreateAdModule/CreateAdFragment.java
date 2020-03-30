@@ -94,7 +94,7 @@ public class CreateAdFragment extends Fragment implements ICreateAd.IView {
         spPetType.setAdapter(new ArrayAdapter(getContext(), R.layout.support_simple_spinner_dropdown_item, getResources().getStringArray(R.array.pet_type)));
         spPetGender.setAdapter(new ArrayAdapter(getContext(), R.layout.support_simple_spinner_dropdown_item, getResources().getStringArray(R.array.pet_gender)));
 
-        pickMediaView.handlePickMedia(3, () -> {
+        pickMediaView.handlePickMedia( () -> {
 
             Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
             intent.setType("image/*");
@@ -192,22 +192,8 @@ public class CreateAdFragment extends Fragment implements ICreateAd.IView {
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK) {
-            if (requestCode == PET_PIC_RESULT_CODE) {
-                Uri uri = data.getData();
-//                bitmap = CompressionClass.compressImage(uri.toString(), getActivity());
-//                try {
-////                    bitmap = MediaStore.Images.Media.getBitmap(this.getContext().getContentResolver(), uri);
-////                } catch (IOException e) {
-////                    e.printStackTrace();
-////                } finally {
-////                    bitmap = CompressionClass.compressImage(uri.toString(), getActivity());
-////
-////                }
-//                imgPetPic.setImageBitmap(bitmap);
-//                imageName = uri.getLastPathSegment();
-
-            } else if (requestCode == PickMediaView.PICK_IMAGE_CODE) {
-                pickMediaView.setDataFromOnResult(data.getData());
+      if (requestCode == PickMediaView.PICK_IMAGE_CODE) {
+                pickMediaView.setDataFromOnResult(String.valueOf(data.getData()));
             }
         }
     }
