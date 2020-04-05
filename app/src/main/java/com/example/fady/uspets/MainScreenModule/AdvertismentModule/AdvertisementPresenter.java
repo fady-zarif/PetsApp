@@ -9,11 +9,10 @@ import androidx.fragment.app.Fragment;
 //import com.example.fady.uspets.FirebaseDatabase.DaggerApplicationComponent;
 import com.example.fady.uspets.FirebaseDatabase.FirebaseAdvertismentClass;
 import com.example.fady.uspets.FirebaseDatabase.FirebaseUserClass;
-import com.example.fady.uspets.Owner;
+import com.example.fady.uspets.USPetsMain.PetUiManager;
+import com.example.fady.uspets.USPetsMain.UserChannel;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
@@ -35,7 +34,20 @@ public class AdvertisementPresenter implements IAdvertisement.IAdvertismentPrese
     @Inject
     public AdvertisementPresenter(Fragment advertismentFragment) {
         this.iAdvertismentView = (IAdvertisement.IAdvertismentView) advertismentFragment;
+    }
 
+    private void setUserListener() {
+        firebaseUserClass.getUserChannels(new EventListener<QuerySnapshot>() {
+            @Override
+            public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
+                if (e == null && queryDocumentSnapshots.size() > 0) {
+                    for (DocumentChange documentChange : queryDocumentSnapshots.getDocumentChanges()) {
+                        if (documentChange.getType() == DocumentChange.Type.ADDED)
+                            PetUiManager.getInstance().addUserChannel(documentChange.getDocument().toObject(UserChannel.class));
+                    }
+                }
+            }
+        });
     }
 
     @Override
@@ -71,6 +83,11 @@ public class AdvertisementPresenter implements IAdvertisement.IAdvertismentPrese
     @Override
     public void onRefreshGetAdvertisement() {
         getAdvertismentOnce();
+    }
+
+    @Override
+    public void listenToUserChannels() {
+        setUserListener();
     }
 
 

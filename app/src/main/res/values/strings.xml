@@ -176,4 +176,8 @@
     <string name="petDesc">Description: </string>
     <string name="petGender">Gender: </string>
     <string name="updateAd">Update</string>
+    <string name="send">Send</string>
+    
+    // AdActivityDetails
+    <string name="messageDialogHint">Message.. </string>
 </resources>

@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
-
     android:orientation="vertical">
 
-<!--    <com.leinardi.android.speeddial.SpeedDialView-->
-<!--        android:id="@+id/speedDial"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_gravity="bottom|right"-->
-<!--        app:sdMainFabClosedSrc="@drawable/ic_camera" />-->
+    <!--    <com.leinardi.android.speeddial.SpeedDialView-->
+    <!--        android:id="@+id/speedDial"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_gravity="bottom|right"-->
+    <!--        app:sdMainFabClosedSrc="@drawable/ic_camera" />-->
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
@@ -71,6 +71,13 @@
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btnFloatingAction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="20dp" />
+
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -112,6 +119,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
                         android:layout_toEndOf="@+id/tvNameTitle"
+                        android:paddingEnd="5dp"
                         android:text="Bazoka"
                         android:textColor="@android:color/black"
                         android:textSize="@dimen/pet_details_text_size"
@@ -140,6 +148,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
                         android:layout_toEndOf="@+id/tvPriceTitle"
+                        android:paddingEnd="5dp"
                         android:text=" 320$"
                         android:textColor="@android:color/black"
                         android:textSize="@dimen/pet_details_text_size"
@@ -158,6 +167,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Age: "
+
                         android:textColor="@android:color/black"
                         android:textSize="@dimen/pet_details_title_text_size"
                         android:textStyle="bold" />
@@ -168,6 +178,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
                         android:layout_toEndOf="@+id/tvAgeTitle"
+                        android:paddingEnd="5dp"
                         android:text="18 Months"
                         android:textColor="@android:color/black"
                         android:textSize="@dimen/pet_details_text_size"
@@ -196,6 +207,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
                         android:layout_toEndOf="@+id/tvGenderTitle"
+                        android:paddingEnd="5dp"
                         android:text="Female"
                         android:textColor="@android:color/black"
                         android:textSize="@dimen/pet_details_text_size"
@@ -225,10 +237,12 @@
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
                     android:layout_toEndOf="@+id/cimgOwner"
+                    android:paddingEnd="5dp"
                     android:text="Fady Shahat"
                     android:textColor="@android:color/black"
                     android:textSize="19sp"
-                    android:textStyle="italic|bold" />
+                    android:textStyle="italic|bold"
+                    tools:ignore="RtlSymmetry" />
 
                 <TextView
                     android:id="@+id/tvOwnerState"
@@ -280,10 +294,12 @@
                     android:id="@+id/tvPetDesc"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:paddingEnd="2dp"
                     android:text="Bazoka is very smart dog"
                     android:textColor="@android:color/black"
                     android:textSize="@dimen/pet_details_text_size"
-                    android:textStyle="italic" />
+                    android:textStyle="italic"
+                    tools:ignore="RtlSymmetry" />
             </LinearLayout>
 
 

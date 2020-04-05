@@ -1,15 +1,11 @@
 package com.example.fady.uspets.RegistrationModule;
 
-import android.app.Activity;
 import android.content.Context;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
-import android.widget.AbsListView;
 import android.widget.Button;
 import android.widget.EditText;
-
-import androidx.annotation.NonNull;
 
 import com.example.fady.uspets.R;
 import com.example.fady.uspets.USPetsMain.USPetMainAlertDialog;
@@ -19,11 +15,11 @@ import javax.annotation.Nonnull;
 public class SignInDialog extends USPetMainAlertDialog {
     EditText etEmail, etPassword;
     Button btnSignIn;
-    SignInClick signInClick;
+    ISignInClick ISignInClick;
 
-    public SignInDialog(@Nonnull Context context, SignInClick signInClick) {
+    public SignInDialog(@Nonnull Context context, ISignInClick ISignInClick) {
         super(context, R.style.CustomDialog);
-        this.signInClick = signInClick;
+        this.ISignInClick = ISignInClick;
     }
 
     @Override
@@ -34,7 +30,7 @@ public class SignInDialog extends USPetMainAlertDialog {
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                signInClick.onSignClickListner(etEmail.getText().toString(), etPassword.getText().toString());
+                ISignInClick.onSignClickListner(etEmail.getText().toString(), etPassword.getText().toString());
             }
         });
         etEmail.addTextChangedListener(new TextWatcher() {
@@ -84,7 +80,7 @@ public class SignInDialog extends USPetMainAlertDialog {
         etPassword.setError(errorMessage);
     }
 
-    interface SignInClick {
+    interface ISignInClick {
         void onSignClickListner(String email, String password);
     }
 

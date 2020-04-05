@@ -3,11 +3,8 @@ package com.example.fady.uspets.RegistrationModule;
 import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.util.Log;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.FragmentActivity;
 
 import com.example.fady.uspets.FirebaseDatabase.FirebaseStorageClass;
 import com.example.fady.uspets.FirebaseDatabase.FirebaseUserClass;
@@ -46,32 +43,15 @@ public class RegistrationPresenter extends UserManager implements IRegistration.
 
     @Override
     public void onSignUpClickListner(Owner owner) {
-        if (iView == null) {
-            Log.e("ggea", "null");
-        } else
-            Log.e("ggea", "not null");
-
-        if (firebaseUserClass == null) {
-            Log.e("firebaseUser", "null");
-        } else
-            Log.e("firebaseUser", "not null");
-
-        if (application == null) {
-            Log.e("Application is", " Null");
-        } else {
-            Log.e("Application is", " not Null");
-        }
-        if (context == null) {
-            Log.e("context is", " Null");
-        } else {
-            Log.e("context is", " not Null");
-        }
         // create new user with email and password
-        firebaseUserClass.registerUser(owner, task -> {
+        if (!checkUserData(owner)) {
+         iView.dismissProgressDialog();
+            return;
+        }firebaseUserClass.registerUser(owner, task -> {
             if (task.isSuccessful()) {
                 uploadUser(owner);
             } else
-                iView.onUserRegisterFailed();
+                iView.onUserRegisterFailed(task.getException().getLocalizedMessage());
 
         });
 
@@ -88,6 +68,28 @@ public class RegistrationPresenter extends UserManager implements IRegistration.
 
 
         });
+    }
+
+    private boolean checkUserData(Owner owner) {
+        boolean isValid = true;
+        if (owner.getoEmail().isEmpty()) {
+            isValid = false;
+            iView.showSignUpEmailErrorMessage("Email can't be empty");
+        }
+        if (owner.getoPassword().isEmpty()) {
+            isValid = false;
+            iView.showSignUpPasswordErrorMessage("Password can't be empty");
+        }
+        if (owner.getoName().isEmpty()) {
+            isValid = false;
+            iView.showSignUpNameErrorMessage("Name can't be empty");
+        }
+        if (owner.getoPhone().isEmpty()) {
+            isValid = false;
+            iView.showSignUpPhoneErrorMessage("Phone can't be empty");
+        }
+
+        return isValid;
     }
 
     @Override
@@ -116,7 +118,6 @@ public class RegistrationPresenter extends UserManager implements IRegistration.
         };
         MyPersonalRunnable myPersonalRunnable = x -> x * 3;
     }
-
 
 
     interface MyPersonalRunnable {

@@ -13,6 +13,8 @@ public interface IAdvertisement {
     interface IAdvertismentPresenter {
         void getAdvertisment();
         void onRefreshGetAdvertisement();
+
+        void listenToUserChannels();
     }
 
     interface IAdvertismentClick {

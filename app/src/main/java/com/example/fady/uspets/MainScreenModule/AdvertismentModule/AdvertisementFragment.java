@@ -63,6 +63,7 @@ public class AdvertisementFragment extends Fragment implements SwipeRefreshLayou
         srRefresh.setOnRefreshListener(this);
         initDagger();
         initAdRecyclerview();
+        iAdvertismentPresenter.listenToUserChannels();
         iAdvertismentPresenter.getAdvertisment();
         return view;
     }

@@ -60,6 +60,7 @@ class PersonalAdActivity : UsPetsMainView(), IPersonalAd.Iview {
 
         for (i in advertismentModel?.petImageArrayList!!.withIndex()) {
             myImagesList.add(i.value)
+            
         }
         pickMediaView.imagesArrayList = myImagesList
 

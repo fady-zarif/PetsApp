@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.Context;
 
 import com.example.fady.uspets.FirebaseDatabase.FirebaseAdvertismentClass;
+import com.example.fady.uspets.FirebaseDatabase.FirebaseChatClass;
 import com.example.fady.uspets.FirebaseDatabase.FirebaseStorageClass;
 import com.example.fady.uspets.FirebaseDatabase.FirebaseUserClass;
 import com.example.fady.uspets.FirebaseDatabase.SharedPreference.SharedPreferencesClass;
@@ -36,6 +37,11 @@ public abstract class ApplicationModule {
         return new FirebaseStorageClass();
     }
 
+    @Singleton
+    @Provides
+    static FirebaseChatClass provideFirebaseChatClass() {
+        return new FirebaseChatClass();
+    }
 
 
 //    @Provides

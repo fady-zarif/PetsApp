@@ -5,13 +5,10 @@ import androidx.appcompat.widget.Toolbar;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
-import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.fady.uspets.ControllerDI.ControllerComponent;
-import com.example.fady.uspets.ControllerDI.ControllerModule;
-import com.example.fady.uspets.ControllerDI.DaggerControllerComponent;
 import com.example.fady.uspets.FirebaseDatabase.FirebaseUserClass;
 import com.example.fady.uspets.MainScreenModule.MainScreenActivity;
 import com.example.fady.uspets.Owner;
@@ -24,7 +21,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class RegistrationActivity extends UsPetsMainView implements SignInDialog.SignInClick, IRegistration.IView {
+public class RegistrationActivity extends UsPetsMainView implements SignInDialog.ISignInClick, IRegistration.IView {
 
     @BindView(R.id.etName)
     EditText etName;
@@ -91,9 +88,9 @@ public class RegistrationActivity extends UsPetsMainView implements SignInDialog
     }
 
     @Override
-    public void onUserRegisterFailed() {
+    public void onUserRegisterFailed(String errorMessage) {
         dismisProgressView();
-        Toast.makeText(this, getString(R.string.userUploadedFailed), Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show();
     }
 
     // TODO: 2019-09-30  Dismiss the dialog and login the user to MainScreen
@@ -119,6 +116,31 @@ public class RegistrationActivity extends UsPetsMainView implements SignInDialog
     @Override
     public void showPasswordErrorMessage(String message) {
         signInDialog.showUserPasswordErrorMessage(message);
+    }
+
+    @Override
+    public void dismissProgressDialog() {
+        dismisProgressView();
+    }
+
+    @Override
+    public void showSignUpNameErrorMessage(String message) {
+        etName.setError(message);
+    }
+
+    @Override
+    public void showSignUpEmailErrorMessage(String message) {
+        etEmail.setError(message);
+    }
+
+    @Override
+    public void showSignUpPasswordErrorMessage(String message) {
+        etPassword.setError(message);
+    }
+
+    @Override
+    public void showSignUpPhoneErrorMessage(String message) {
+        etPhone.setError(message);
     }
 
     @Override

@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.Context;
 
 import com.example.fady.uspets.FirebaseDatabase.FirebaseAdvertismentClass;
+import com.example.fady.uspets.FirebaseDatabase.FirebaseChatClass;
 import com.example.fady.uspets.FirebaseDatabase.FirebaseStorageClass;
 import com.example.fady.uspets.FirebaseDatabase.FirebaseUserClass;
 import com.example.fady.uspets.FirebaseDatabase.SharedPreference.SharedPreferenceModule;
@@ -34,6 +35,7 @@ public interface ApplicationComponent extends AndroidInjector<PetApp> {
 
     FirebaseUserClass getFirebaseUserClass();
 
+    FirebaseChatClass getFirebaseChatClass();
 
     void injectMainScreenActivty(MainScreenActivity mainScreenActivity);
 

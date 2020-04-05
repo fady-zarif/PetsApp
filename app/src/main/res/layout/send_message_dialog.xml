@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/sign_in_dialog"
+    android:padding="20dp">
+
+    <com.rengwuxian.materialedittext.MaterialEditText
+        android:id="@+id/etMessageDialog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:hint="@string/messageDialogHint"
+        android:paddingStart="2dp"
+        android:paddingEnd="2dp"
+        tools:layout_editor_absoluteX="10dp"
+        tools:layout_editor_absoluteY="10dp" />
+
+
+    <Button
+        android:id="@+id/btnSendMessage"
+        android:layout_width="209dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/sign_up_button"
+        android:text="@string/send"
+        android:textColor="@color/color_white_main"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etMessageDialog" />
+</androidx.constraintlayout.widget.ConstraintLayout>

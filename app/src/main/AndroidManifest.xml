@@ -14,13 +14,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".myAdvertisement.MyAdvertisementActivity"
-            android:theme="@style/profileToolbarStyle"
-            android:parentActivityName=".MainScreenModule.MainScreenActivity"></activity>
+        <activity android:name=".messagesModule.MessagesActivity"></activity>
+        <activity android:name=".chatModule.ChatActivity" />
+        <activity
+            android:name=".myAdvertisement.MyAdvertisementActivity"
+            android:parentActivityName=".MainScreenModule.MainScreenActivity"
+            android:theme="@style/profileToolbarStyle" />
         <activity
             android:name=".PersonalAdModule.PersonalAdActivity"
             android:theme="@style/profileToolbarStyle"
-            android:windowSoftInputMode="stateHidden"></activity>
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".PetDetailsModule.PetDetailsActiviy"
             android:parentActivityName=".MainScreenModule.MainScreenActivity" />

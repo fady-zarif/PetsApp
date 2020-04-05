@@ -3,13 +3,19 @@ package com.example.fady.uspets;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.example.fady.uspets.USPetsMain.UserChannel;
+
+import java.util.ArrayList;
+
 public class Owner implements Parcelable {
-    String oUid;
-    String oName;
-    String oEmail;
-    String oPassword;
-    String oPhone;
-    String oPhoto;
+    private String oUid;
+    private String oName;
+    private String oEmail;
+    private String oPassword;
+    private String oPhone;
+    private String oPhoto;
+    private ArrayList<UserChannel> userChannels;
+
 
     protected Owner(Parcel in) {
         oUid = in.readString();
@@ -91,6 +97,13 @@ public class Owner implements Parcelable {
 
     }
 
+    public Owner(String oName, String oEmail, String oPassword, String oPhone, String oPhoto,
+                 Long oRating, Long oRateNum, ArrayList<UserChannel> userChannels) {
+        this(oName, oEmail, oPassword, oPhone, oPhoto, oRating, oRateNum);
+        this.userChannels = userChannels;
+
+    }
+
     public String getoUid() {
         return oUid;
     }
@@ -125,6 +138,14 @@ public class Owner implements Parcelable {
 
     public String getoPhone() {
         return oPhone;
+    }
+
+    public ArrayList<UserChannel> getUserChannels() {
+        return userChannels;
+    }
+
+    public void setUserChannels(ArrayList<UserChannel> userChannels) {
+        this.userChannels = userChannels;
     }
 
     public void setoPhone(String oPhone) {
