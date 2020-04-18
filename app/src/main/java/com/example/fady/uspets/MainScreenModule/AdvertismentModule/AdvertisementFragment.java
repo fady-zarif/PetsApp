@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+import androidx.viewbinding.ViewBinding;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,6 +23,7 @@ import com.example.fady.uspets.PersonalAdModule.PersonalAdActivity;
 import com.example.fady.uspets.PetDetailsModule.PetDetailsActiviy;
 import com.example.fady.uspets.R;
 import com.example.fady.uspets.USPetsMain.PetUiManager;
+import com.example.fady.uspets.databinding.AdvertismentViewLayoutBinding;
 
 import java.util.ArrayList;
 
@@ -42,9 +44,8 @@ public class AdvertisementFragment extends Fragment implements SwipeRefreshLayou
     @BindView(R.id.swiperefresh)
     SwipeRefreshLayout srRefresh;
 
-    ControllerComponent controllerComponent;
-    ArrayList<AdvertisementModel> advertisementModelArrayList;
-    AdvertisementAdapter advertisementAdapter;
+    private ArrayList<AdvertisementModel> advertisementModelArrayList;
+    private AdvertisementAdapter advertisementAdapter;
 
     @Inject
     AdvertisementPresenter iAdvertismentPresenter;
@@ -57,14 +58,15 @@ public class AdvertisementFragment extends Fragment implements SwipeRefreshLayou
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_advertisment, container, false);
+
+        View view = inflater.inflate(R.layout.fragmentadvertisement, container, false);
+
         ButterKnife.bind(this, view);
         srRefresh.setOnRefreshListener(this);
         initDagger();
         initAdRecyclerview();
         iAdvertismentPresenter.listenToUserChannels();
-        iAdvertismentPresenter.getAdvertisment();
+        iAdvertismentPresenter.getAdvertisement();
         return view;
     }
 
@@ -77,27 +79,24 @@ public class AdvertisementFragment extends Fragment implements SwipeRefreshLayou
     }
 
     private void initDagger() {
-        controllerComponent = DaggerControllerComponent.builder().applicationComponent(((MainScreenActivity) getActivity())
+        ControllerComponent controllerComponent = DaggerControllerComponent.builder().applicationComponent(((MainScreenActivity) getActivity())
                 .getApplicationComponent()).controllerModule(new ControllerModule(this)).build();
         controllerComponent.inject(this);
     }
 
     @Override
     public void onRefresh() {
-        srRefresh.post(new Runnable() {
-            @Override
-            public void run() {
-                srRefresh.setRefreshing(true);
+        srRefresh.post(() -> {
+            srRefresh.setRefreshing(true);
 
-                advertisementModelArrayList.clear();
-                advertisementAdapter.notifyDataSetChanged();
-                iAdvertismentPresenter.onRefreshGetAdvertisement();
-            }
+            advertisementModelArrayList.clear();
+            advertisementAdapter.notifyDataSetChanged();
+            iAdvertismentPresenter.onRefreshGetAdvertisement();
         });
     }
 
     @Override
-    public void onRetriveAdvertismentsSuccess(AdvertisementModel advertisementModel) {
+    public void onRetrieveAdvertisementsSuccess(AdvertisementModel advertisementModel) {
         advertisementModelArrayList.add(0, advertisementModel);
         advertisementAdapter.notifyDataSetChanged();
         if (srRefresh.isRefreshing())
@@ -113,14 +112,14 @@ public class AdvertisementFragment extends Fragment implements SwipeRefreshLayou
 //}
 
     @Override
-    public void onRetriveAdvertismentsFailed(String errorMessage) {
+    public void onRetrieveAdvertisementsFailed(String errorMessage) {
         Toast.makeText(getActivity(), errorMessage, Toast.LENGTH_SHORT).show();
         srRefresh.setRefreshing(false);
     }
 
 
     @Override
-    public void onAdvertismentClicListner(int pos) {
+    public void onAdvertisementClickListener(int pos) {
         Intent intent;
         if (advertisementModelArrayList.get(pos).getOwnerUid().equals(PetUiManager.getInstance().getCurrentUser().getoUid()))
             intent = new Intent(getActivity(), PersonalAdActivity.class);

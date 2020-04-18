@@ -1,7 +1,11 @@
 package com.example.fady.uspets.PetDetailsModule
 
 import android.annotation.SuppressLint
+import android.content.Intent
+import android.net.Uri
+import android.opengl.Visibility
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import com.example.fady.uspets.MainScreenModule.AdvertismentModule.AdvertisementFragment
 import com.example.fady.uspets.MainScreenModule.AdvertismentModule.AdvertisementModel
@@ -11,6 +15,7 @@ import com.example.fady.uspets.R
 import com.example.fady.uspets.SliderAdapterExample
 import com.example.fady.uspets.USPetsMain.PetUiManager
 import com.example.fady.uspets.USPetsMain.UsPetsMainView
+import com.squareup.picasso.Picasso
 import  kotlinx.android.synthetic.main.activity_pet_details_activiy.*
 import javax.inject.Inject
 
@@ -39,9 +44,14 @@ class PetDetailsActiviy : UsPetsMainView(), IpetDetails.Iview {
             setPetItem(currentPet)
         sendMessageDialogView = SendMessageDialogView(this, object : ISendMessage {
             override fun onSendMessage(message: String) {
-                ipresenter.onSendMessageClick(message, currentPet.ownerUid)
+                ipresenter.onSendMessageClick(message, currentPet!!.ownerUid)
             }
         })
+
+
+//        floatingMenu.setOnMenuButtonClickListener {
+//            floatingMenu.open(true)
+//        }
     }
 /*
     sendMessageDialogView = SendMessageDialogView(this, object : ISendMessage {
@@ -63,10 +73,16 @@ class PetDetailsActiviy : UsPetsMainView(), IpetDetails.Iview {
         tvPetDesc.text = currentPet.description
         tvPetPrice.text = currentPet.price + PetUiManager.getInstance().currencySymbol
         tvPetGender.text = currentPet.gender
-        btnFloatingAction.setOnClickListener() {
+        menu_item_message.setOnClickListener() {
             sendMessageDialogView.showDialog()
+            menu_call_message.close(true)
         }
-
+        menu_item_call.setOnClickListener {
+            val intent = Intent(Intent.ACTION_DIAL)
+            intent.data = Uri.parse("tel:" + ipresenter.ownerPhoneNumber)
+            startActivity(intent);
+            menu_call_message.close(true)
+        }
         val sliderAdapter = SliderAdapterExample(this, currentPet.petImageArrayList)
         imgPetPicSlider.setSliderAdapter(sliderAdapter)
     }
@@ -79,6 +95,14 @@ class PetDetailsActiviy : UsPetsMainView(), IpetDetails.Iview {
     override fun onshowError(errorMessage: String?) {
         Toast.makeText(this, errorMessage, Toast.LENGTH_LONG).show();
         sendMessageDialogView.dismiss()
+    }
+
+    override fun showOwnerPhoto(url: String) {
+        PetUiManager.getInstance().setPicassoImage(url, cimgOwner)
+    }
+
+    override fun userHasNoNumber() {
+        menu_item_call.visibility = View.GONE
     }
 
 }

@@ -10,8 +10,9 @@ import com.example.fady.uspets.PetApp;
 import com.example.fady.uspets.R;
 import com.example.fady.uspets.RegistrationModule.RegistrationActivity;
 import com.example.fady.uspets.USPetsMain.UsPetsMainView;
+import com.example.fady.uspets.messagesModule.MessagesActivity;
 import com.example.fady.uspets.myAdvertisement.MyAdvertisementActivity;
-import com.example.fady.uspets.profilemodule.ProfileActivity;
+import com.example.fady.uspets.profileModule.ProfileActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -60,14 +61,7 @@ public class MainScreenActivity extends UsPetsMainView implements NavigationView
         toolbar.setTitle(getString(R.string.app_title));
         setSupportActionBar(toolbar);
         ((PetApp) getApplicationContext()).getDaggerApplicationComponent().injectMainScreenActivty(this);
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+
         drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
@@ -78,20 +72,7 @@ public class MainScreenActivity extends UsPetsMainView implements NavigationView
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
-//
-//        mAppBarConfiguration = new AppBarConfiguration.Builder(
-//                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow,
-//                R.id.nav_tools, R.id.nav_share, R.id.nav_send)
-//                .setDrawerLayout(drawer)
-//                .build();
 
-//        RelativeLayout relativeLayout = findViewById(R.id.myRelative);
-//        CreateAdFragment createAdFragment = new CreateAdFragment();
-//        getSupportFragmentManager().beginTransaction().replace(R.id.myRelative, createAdFragment).commit();
-//        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-//        NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
-//        NavigationUI.setupWithNavController(navigationView, navController);
-//
 
         sharedPreferencesClass.putStringInPref("aaa", "aaaa");
         tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.viewpager_tab1)));
@@ -137,7 +118,7 @@ public class MainScreenActivity extends UsPetsMainView implements NavigationView
         } else if (id == R.id.navAd) {
             startActivity(new Intent(MainScreenActivity.this, MyAdvertisementActivity.class));
         } else if (id == R.id.navMessage) {
-
+            startActivity(new Intent(MainScreenActivity.this, MessagesActivity.class));
         } else if (id == R.id.navLogOut) {
             this.finish();
             firebaseUserClass.logOutUser();

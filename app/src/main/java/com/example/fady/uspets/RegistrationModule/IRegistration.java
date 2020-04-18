@@ -14,14 +14,21 @@ public interface IRegistration {
 
         void showUserEmailErrorMessage(String message);
 
+        void showProgressDialog();
+
+
+
         void showPasswordErrorMessage(String message);
         // SignUp fields
 
         void dismissProgressDialog();
 
         void showSignUpNameErrorMessage(String message);
+
         void showSignUpEmailErrorMessage(String message);
+
         void showSignUpPasswordErrorMessage(String message);
+
         void showSignUpPhoneErrorMessage(String message);
 
 

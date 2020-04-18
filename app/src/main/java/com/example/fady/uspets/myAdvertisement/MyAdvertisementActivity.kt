@@ -29,7 +29,7 @@ class MyAdvertisementActivity : UsPetsMainView(), SwipeRefreshLayout.OnRefreshLi
         setContentView(R.layout.activity_my_advertisement)
 
 
-        var controllerComponent = initDaggerController(this, null)
+        val controllerComponent = initDaggerController(this, null)
         controllerComponent.inject(this)
 
 
@@ -46,7 +46,7 @@ class MyAdvertisementActivity : UsPetsMainView(), SwipeRefreshLayout.OnRefreshLi
     }
 
 
-    override fun onAdvertismentClicListner(pos: Int) {
+    override fun onAdvertisementClickListener(pos: Int) {
         val intent = Intent(this, PersonalAdActivity::class.java)
         intent.putExtra(ADVERTISEMENT_KEY, adsList[pos])
         startActivity(intent)
@@ -63,7 +63,7 @@ class MyAdvertisementActivity : UsPetsMainView(), SwipeRefreshLayout.OnRefreshLi
         Toast.makeText(this, message, Toast.LENGTH_LONG).show()
     }
 
-    fun cancelRefreshing() {
+    private fun cancelRefreshing() {
         if (swiperefreshMyAds.isRefreshing)
             swiperefreshMyAds.isRefreshing = false
     }

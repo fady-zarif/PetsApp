@@ -24,8 +24,8 @@ public class SignInDialog extends USPetMainAlertDialog {
 
     @Override
     protected void onCreateDialog() {
-        etEmail = findViewById(R.id.etEmail);
-        etPassword = findViewById(R.id.etPassword);
+        etEmail = findViewById(R.id.etDialogEmail);
+        etPassword = findViewById(R.id.etDialogPassword);
         btnSignIn = findViewById(R.id.btnSignIn);
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override

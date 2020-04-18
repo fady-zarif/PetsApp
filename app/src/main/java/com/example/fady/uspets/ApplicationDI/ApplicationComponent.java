@@ -20,7 +20,7 @@ import dagger.android.AndroidInjector;
 import dagger.android.support.AndroidSupportInjectionModule;
 
 @Singleton
-@Component(modules = {ApplicationModule.class, SharedPreferenceModule.class, AndroidSupportInjectionModule.class, ApplicationModuleView.class})
+@Component(modules = {ApplicationModule.class, SharedPreferenceModule.class, AndroidSupportInjectionModule.class})
 public interface ApplicationComponent extends AndroidInjector<PetApp> {
 
     FirebaseAdvertismentClass getFirebaseAdvertisementClass();

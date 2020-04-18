@@ -25,6 +25,7 @@ public class PetDetailsPresenter implements IpetDetails.Ipresenter {
     FirebaseUserClass firebaseUserClass;
     @Inject
     FirebaseChatClass firebaseChatClass;
+    private Owner owner;
 
 
     @Inject
@@ -35,10 +36,26 @@ public class PetDetailsPresenter implements IpetDetails.Ipresenter {
     @Override
     public void getPetOwnerInfo(String ownerId) {
         firebaseUserClass.getAnyUserInfo(ownerId, dataSnapShot -> {
-            Owner owner = dataSnapShot.toObject(Owner.class);
-            iview.onshowOwnerInfo(owner);
+            owner = dataSnapShot.toObject(Owner.class);
+            if (owner != null) {
+                iview.onshowOwnerInfo(owner);
+                checkUserData();
+            }
         });
     }
+
+    private void checkUserData() {
+        if (owner.getoPhone() == null)
+            iview.userHasNoNumber();
+        if (owner.getoPhoto() != null)
+            iview.showOwnerPhoto(owner.getoPhoto());
+    }
+
+    @Override
+    public String getOwnerPhoneNumber() {
+        return owner.getoPhone();
+    }
+
 
     @Override
     public void onOwnerClickListner() {
@@ -54,22 +71,20 @@ public class PetDetailsPresenter implements IpetDetails.Ipresenter {
                 petOwnerUid, firebaseChatClass.getNewDocument(),
                 Calendar.getInstance().getTime(), MESSAGE_TYPE_TEXT);
         // check if petOwnerId is already in my channelList
-        if (!PetUiManager.getInstance().getUserChannels().containsKey(petOwnerUid)) {
+        if (!PetUiManager.getInstance().getUserChannelsHashMap().containsKey(petOwnerUid)) {
             firebaseUserClass.updateUserWithMessages(messageModel, new OnCompleteListener<Task>() {
                 @Override
                 public void onComplete(@NonNull Task<Task> task) {
                     if (task.isSuccessful()) {
-                        uploadMessage(messageModel.getMessageId(),messageModel);
+                        uploadMessage(messageModel.getMessageId(), messageModel);
                     } else {
                         iview.onshowError("uploading to useres failed");
                     }
                     // TODO: 4/4/20  update view with error message
                 }
             });
-        } else {
-
-            uploadMessage(PetUiManager.getInstance().getUserChannels().get(petOwnerUid),messageModel);
-        }
+        } else
+            uploadMessage(PetUiManager.getInstance().getUserChannelsHashMap().get(petOwnerUid), messageModel);
 
     }
 

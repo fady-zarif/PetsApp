@@ -3,21 +3,21 @@ package com.example.fady.uspets.MainScreenModule.AdvertismentModule;
 public interface IAdvertisement {
     interface IAdvertismentView {
 
-        void onRetriveAdvertismentsSuccess(AdvertisementModel advertisementModel);
+        void onRetrieveAdvertisementsSuccess(AdvertisementModel advertisementModel);
 //        void onRetriveAdvertismentsOnceSuccess(AdvertisementModel advertisementModel);
 
-        void onRetriveAdvertismentsFailed(String errorMessage);
+        void onRetrieveAdvertisementsFailed(String errorMessage);
 
     }
 
     interface IAdvertismentPresenter {
-        void getAdvertisment();
+        void getAdvertisement();
         void onRefreshGetAdvertisement();
 
         void listenToUserChannels();
     }
 
     interface IAdvertismentClick {
-        void onAdvertismentClicListner(int pos);
+        void onAdvertisementClickListener(int pos);
     }
 }

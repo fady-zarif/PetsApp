@@ -12,13 +12,14 @@ import com.example.fady.uspets.FirebaseDatabase.SharedPreference.SharedPreferenc
 import com.example.fady.uspets.Owner;
 
 import com.example.fady.uspets.R;
+import com.example.fady.uspets.USPetsMain.IUSPetMain;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 
 import javax.inject.Inject;
 
 
-public class RegistrationPresenter extends UserManager implements IRegistration.IPresenter {
+public class RegistrationPresenter extends UserManager implements IRegistration.IPresenter, IUSPetMain.IUserDataListner {
 
 
     @Inject
@@ -45,9 +46,10 @@ public class RegistrationPresenter extends UserManager implements IRegistration.
     public void onSignUpClickListner(Owner owner) {
         // create new user with email and password
         if (!checkUserData(owner)) {
-         iView.dismissProgressDialog();
+            iView.dismissProgressDialog();
             return;
-        }firebaseUserClass.registerUser(owner, task -> {
+        }
+        firebaseUserClass.registerUser(owner, task -> {
             if (task.isSuccessful()) {
                 uploadUser(owner);
             } else
@@ -105,35 +107,36 @@ public class RegistrationPresenter extends UserManager implements IRegistration.
         }
         if (!isValid)
             return;
+
         signInUser(email, password);
 
     }
 
-    private void tty() {
-        Runnable runnable = new Runnable() {
-            @Override
-            public void run() {
 
-            }
-        };
-        MyPersonalRunnable myPersonalRunnable = x -> x * 3;
+
+    @Override
+    public void onUserDataSuccess(Owner owner) {
+        iView.onUserLoginSuccess();
+    }
+
+    @Override
+    public void onUserDataFailed(String message) {
+        iView.onUserLoginFailed(message);
     }
 
 
-    interface MyPersonalRunnable {
-
-        int run2(int x);
-    }
 
     private void signInUser(String email, String password) {
+        iView.showProgressDialog();
         firebaseUserClass.signInUser(email, password, new OnCompleteListener() {
             @Override
             public void onComplete(@NonNull Task task) {
                 if (task.isSuccessful()) {
                     sharedPreferencesClass.putStringInPref(SharedPreferencesClass.USERNAME_PREF, email);
                     sharedPreferencesClass.putStringInPref(SharedPreferencesClass.PASSWORD_PREF, password);
-                    getUserInfo();
-                    iView.onUserLoginSuccess();
+                    getUserInfo(RegistrationPresenter.this);
+
+
                 } else
                     iView.onUserLoginFailed(task.getException().getMessage());
             }

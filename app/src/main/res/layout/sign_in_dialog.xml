@@ -18,7 +18,7 @@
 
 
         <com.rengwuxian.materialedittext.MaterialEditText
-            android:id="@+id/etEmail"
+            android:id="@+id/etDialogEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@android:color/white"
@@ -27,11 +27,11 @@
             android:textColor="@android:color/black"
             app:met_floatingLabelText="Email"
             app:met_iconLeft="@drawable/ic_face_black_24dp"
-            app:met_textColor="@android:color/white" />
+       />
 
         <com.rengwuxian.materialedittext.MaterialEditText
-            android:id="@+id/etPassword"
-
+            android:id="@+id/etDialogPassword"
+android:inputType="textPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@android:color/white"

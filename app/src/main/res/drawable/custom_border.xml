@@ -7,7 +7,7 @@
     <stroke
         android:width="4dp"
         android:color="@color/Toolbar"
-        android:dashWidth="3dp"
-        android:dashGap="2dp" />
+        android:dashWidth="8dp"
+        android:dashGap="1dp" />
 
 </shape>

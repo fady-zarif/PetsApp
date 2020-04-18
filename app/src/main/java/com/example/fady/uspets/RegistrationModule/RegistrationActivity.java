@@ -97,7 +97,6 @@ public class RegistrationActivity extends UsPetsMainView implements SignInDialog
     @Override
     public void onUserLoginSuccess() {
         dismisProgressView();
-//        Toast.makeText(this, "User Login Success", Toast.LENGTH_SHORT).show();
         startMainScreenActivity();
     }
 
@@ -111,6 +110,11 @@ public class RegistrationActivity extends UsPetsMainView implements SignInDialog
     @Override
     public void showUserEmailErrorMessage(String message) {
         signInDialog.showUserEmailErrorMessage(message);
+    }
+
+    @Override
+    public void showProgressDialog() {
+        showProgressView();
     }
 
     @Override

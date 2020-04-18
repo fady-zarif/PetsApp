@@ -34,7 +34,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 import static android.app.Activity.RESULT_OK;
-import static com.example.fady.uspets.MainScreenModule.CreateAdModule.CreateAdConstant.PET_PIC_RESULT_CODE;
+import static com.example.fady.uspets.FirebaseDatabase.FirebaseConstant.PET_PIC_RESULT_CODE;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -74,6 +74,7 @@ public class CreateAdFragment extends Fragment implements ICreateAd.IView {
     //    ArrayList<String> imageName = "";
     ICreateAdwithActivityHolder iCreateAdwithActivityHolder;
     ControllerComponent controllerComponent;
+    CreateAdFragment_ViewBinding binding;
 
     public CreateAdFragment() {
         // Required empty public constructor
@@ -87,6 +88,7 @@ public class CreateAdFragment extends Fragment implements ICreateAd.IView {
         View view = inflater.inflate(R.layout.fragment_create_ad, container, false);
         ButterKnife.bind(this, view);
 
+
         controllerComponent = ((MainScreenActivity) getActivity()).initDaggerController(null, this);
         controllerComponent.inject(this);
         iCreateAdwithActivityHolder = ((MainScreenActivity) getActivity());
@@ -94,7 +96,7 @@ public class CreateAdFragment extends Fragment implements ICreateAd.IView {
         spPetType.setAdapter(new ArrayAdapter(getContext(), R.layout.support_simple_spinner_dropdown_item, getResources().getStringArray(R.array.pet_type)));
         spPetGender.setAdapter(new ArrayAdapter(getContext(), R.layout.support_simple_spinner_dropdown_item, getResources().getStringArray(R.array.pet_gender)));
 
-        pickMediaView.handlePickMedia( () -> {
+        pickMediaView.handlePickMedia(() -> {
 
             Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
             intent.setType("image/*");
@@ -170,15 +172,12 @@ public class CreateAdFragment extends Fragment implements ICreateAd.IView {
     public void onShareAdSuccess() {
         dismissProgressView();
         resetCreateAdScreen();
-//        Toast.makeText(getActivity(), "Heey", Toast.LENGTH_SHORT).show();
         iCreateAdwithActivityHolder.onCreateAdSuccess();
     }
 
     @Override
     public void onShareAdFailed(String message) {
         dismissProgressView();
-//        Toast.makeText(getActivity(), "Failur", Toast.LENGTH_SHORT).show();
-
     }
 
     @Override
@@ -192,7 +191,7 @@ public class CreateAdFragment extends Fragment implements ICreateAd.IView {
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK) {
-      if (requestCode == PickMediaView.PICK_IMAGE_CODE) {
+            if (requestCode == PickMediaView.PICK_IMAGE_CODE) {
                 pickMediaView.setDataFromOnResult(String.valueOf(data.getData()));
             }
         }

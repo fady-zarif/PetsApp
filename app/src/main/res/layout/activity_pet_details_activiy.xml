@@ -76,7 +76,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
-        android:layout_margin="20dp" />
+        android:layout_margin="20dp"
+        android:visibility="gone" />
+
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -306,4 +308,31 @@
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
+    <com.github.clans.fab.FloatingActionMenu
+        android:id="@+id/menu_call_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:layout_margin="10dp"
+        android:layout_marginTop="@dimen/dimen_3dp"
+        android:layout_marginEnd="@dimen/dimen_3dp"
+        app:menu_colorNormal="@color/Toolbar"
+        app:menu_icon="@drawable/fab_add"
+        app:menu_openDirection="up"
+        app:menu_showShadow="true">
+
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/menu_item_call"
+            style="@style/fab_style"
+            android:src="@drawable/ic_call_white_24dp"
+            app:fab_colorNormal="@color/Toolbar" />
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/menu_item_message"
+            style="@style/fab_style"
+            android:src="@drawable/ic_message_black_24dp"
+            app:fab_colorNormal="@color/Toolbar" />
+
+    </com.github.clans.fab.FloatingActionMenu>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

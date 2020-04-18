@@ -1,5 +1,6 @@
 package com.example.fady.uspets.MainScreenModule.AdvertismentModule;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -13,6 +14,7 @@ import androidx.annotation.Nullable;
 
 import com.example.fady.uspets.Owner;
 import com.example.fady.uspets.R;
+import com.example.fady.uspets.USPetsMain.PetUiManager;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -21,6 +23,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class AdvertisementView extends LinearLayout {
+
+    // TODO: 4/17/20 replace with viewBinding
     @BindView(R.id.imgAdvPet)
     ImageView imgAdvPet;
     @BindView(R.id.tvPetType)
@@ -64,17 +68,17 @@ public class AdvertisementView extends LinearLayout {
         ButterKnife.bind(this, view);
     }
 
-    public void setAdvertismentItem(AdvertisementModel advertismentItem) {
-        if (advertismentItem.getPetImageArrayList() != null)
-            setImgAdvPet(advertismentItem.getPetImageArrayList().get(0));
+    public void setAdvertisementItem(AdvertisementModel advertisementModel) {
+        if (advertisementModel.getPetImageArrayList() != null)
+            setImgAdvPet(advertisementModel.getPetImageArrayList().get(0));
 
-        setPetAge(advertismentItem.getAge());
-        setPetType(advertismentItem.getType());
-        setTvPetGender(advertismentItem.getGender());
-        setTvPetPrice(advertismentItem.getPrice());
-//        if (advertismentItem.getOwner() != null) {
-//            PetsLogClass.showLogError("OWNEEISHERE", advertismentItem.getOwner().getoUid());
-//            setAdOwnerInfo(advertismentItem.getOwner());
+        setPetAge(advertisementModel.getAge());
+        setPetType(advertisementModel.getType());
+        setTvPetGender(advertisementModel.getGender());
+        setTvPetPrice(advertisementModel.getPrice());
+//        if (advertisementModel.getOwner() != null) {
+//            PetsLogClass.showLogError("OWNEEISHERE", advertisementModel.getOwner().getoUid());
+//            setAdOwnerInfo(advertisementModel.getOwner());
 //        }
     }
 
@@ -102,7 +106,7 @@ public class AdvertisementView extends LinearLayout {
     }
 
     private void setImgAdvPet(String url) {
-        if (!url.isEmpty() && url != null) {
+        if (!url.isEmpty()) {
             Picasso.get()
                     .load(url)
                     .placeholder(R.drawable.loading_image)
@@ -110,8 +114,9 @@ public class AdvertisementView extends LinearLayout {
         }
     }
 
+    @SuppressLint("SetTextI18n")
     private void setTvPetPrice(String price) {
-        tvPetPrice.setText(price + " USD");
+        tvPetPrice.setText(price + PetUiManager.getInstance().getCurrencySymbol());
     }
 
     private void setTvPetGender(String gender) {

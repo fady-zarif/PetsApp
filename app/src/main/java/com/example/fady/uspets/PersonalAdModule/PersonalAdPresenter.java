@@ -11,6 +11,7 @@ import com.example.fady.uspets.FirebaseDatabase.FirebaseAdvertismentClass;
 import com.example.fady.uspets.FirebaseDatabase.FirebaseStorageClass;
 import com.example.fady.uspets.MainScreenModule.AdvertismentModule.AdvertisementModel;
 import com.example.fady.uspets.MainScreenModule.CreateAdModule.CreateAdConstant;
+import com.example.fady.uspets.USPetsMain.PetUiManager;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -31,6 +32,8 @@ import io.reactivex.rxjava3.core.ObservableOnSubscribe;
 import io.reactivex.rxjava3.core.Scheduler;
 import io.reactivex.rxjava3.functions.Function;
 import io.reactivex.rxjava3.schedulers.Schedulers;
+
+import static com.example.fady.uspets.FirebaseDatabase.FirebaseConstant.PET_IMAGES_FOLDER;
 
 public class PersonalAdPresenter implements IPersonalAd.Ipresenter {
     IPersonalAd.Iview iview;
@@ -122,7 +125,7 @@ public class PersonalAdPresenter implements IPersonalAd.Ipresenter {
                     isImagesChanged = true;
 
                     String currentUri = modifiedImagesArrayList.get(i);
-                    sendPic(currentUri, getByteArray(currentUri));
+                    sendPic(currentUri, PetUiManager.getInstance().getByteArray(context, currentUri));
                 }
             }
             if (!isImagesChanged && modifiedImagesArrayList.size() < advertisementModel.getPetImageArrayList().size())
@@ -162,7 +165,7 @@ public class PersonalAdPresenter implements IPersonalAd.Ipresenter {
         Observable<Boolean> observable = Observable.create(new ObservableOnSubscribe<Boolean>() {
             @Override
             public void subscribe(@NonNull ObservableEmitter<Boolean> emitter) throws Throwable {
-                firebaseStorageClass.uploadImage(CreateAdConstant.PET_IMAGES_FOLDER, picName, byteArray, new OnSuccessListener<Uri>() {
+                firebaseStorageClass.uploadImage(PET_IMAGES_FOLDER, picName, byteArray, new OnSuccessListener<Uri>() {
                     @Override
                     public void onSuccess(Uri uri) {
                         finalImagesArrayList.add(uri.toString());

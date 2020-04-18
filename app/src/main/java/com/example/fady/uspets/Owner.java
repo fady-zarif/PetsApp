@@ -15,6 +15,8 @@ public class Owner implements Parcelable {
     private String oPhone;
     private String oPhoto;
     private ArrayList<UserChannel> userChannels;
+    private Long oRating;
+    private Long oRateNum;
 
 
     protected Owner(Parcel in) {
@@ -64,8 +66,6 @@ public class Owner implements Parcelable {
         this.oRateNum = oRateNum;
     }
 
-    Long oRating;
-    Long oRateNum;
 
     public Owner() {
     }
@@ -185,5 +185,11 @@ public class Owner implements Parcelable {
             dest.writeByte((byte) 1);
             dest.writeLong(oRateNum);
         }
+    }
+
+    public void addUserChannel(UserChannel userChannel) {
+        if (userChannels == null)
+            userChannels = new ArrayList<>();
+        userChannels.add(userChannel);
     }
 }

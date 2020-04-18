@@ -1,4 +1,4 @@
-package com.example.fady.uspets.profilemodule;
+package com.example.fady.uspets.profileModule;
 
 import android.util.Log;
 
@@ -11,13 +11,15 @@ public interface Iprofile {
 
         void showUserInfo(Owner owner);
 
-        default void hello() {
-            Log.e("geey", "aaa0");
-        }
+        void onUpdatePhotoSuccess(String url);
+
+        void onUpdatePhotoFailed(String errorMessage);
 
     }
 
     interface IPresenter {
         void getUserData();
+
+        void uploadUserImage(String image);
     }
 }

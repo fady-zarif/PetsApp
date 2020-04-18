@@ -19,6 +19,7 @@ import javax.inject.Singleton;
 
 import static com.example.fady.uspets.FirebaseDatabase.FirebaseConstant.FIRESTORE_USER_CHANNELS_REFEREMCE;
 import static com.example.fady.uspets.FirebaseDatabase.FirebaseConstant.FIRESTORE_USER_REFERENCE;
+import static com.example.fady.uspets.FirebaseDatabase.FirebaseConstant.USER_PHOTO_FIELD;
 
 @Singleton
 public class FirebaseUserClass extends FirebaseBase {
@@ -33,6 +34,10 @@ public class FirebaseUserClass extends FirebaseBase {
 
     public void registerUser(Owner owner, OnCompleteListener onCompleteListener) {
         getFirebaseAuthInstance().createUserWithEmailAndPassword(owner.getoEmail(), owner.getoPassword()).addOnCompleteListener(onCompleteListener);
+    }
+
+    public void updateUserPic( String url) {
+        getUserRef().document(getCurrentUser().getUid()).update(USER_PHOTO_FIELD, url);
     }
 
     public void signInUser(String userEmail, String userPassword, OnCompleteListener onCompleteListener) {
@@ -64,7 +69,7 @@ public class FirebaseUserClass extends FirebaseBase {
                 .document(messageModel.getReceiverId()).set(new UserChannel(messageModel.getReceiverId(), messageModel.getMessageId()));
 
         Task task2 = getUserRef().document(messageModel.getReceiverId()).collection(FIRESTORE_USER_CHANNELS_REFEREMCE)
-                .document(messageModel.getSenderId()).set(new UserChannel(messageModel.getReceiverId(), messageModel.getMessageId()));
+                .document(messageModel.getSenderId()).set(new UserChannel(messageModel.getSenderId(), messageModel.getMessageId()));
 //                .add(new UserChannel(messageModel.getSenderId(), messageModel.getMessageId()));
 
         Task listTask = Tasks.whenAllComplete(task1, task2);
@@ -81,7 +86,7 @@ public class FirebaseUserClass extends FirebaseBase {
     }
 
     FirebaseUser getCurrentUser() {
-        return firebaseAuth.getCurrentUser();
+        return FirebaseAuth.getInstance().getCurrentUser();
     }
 
 

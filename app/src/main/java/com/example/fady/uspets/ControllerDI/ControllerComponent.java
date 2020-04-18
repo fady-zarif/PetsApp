@@ -4,12 +4,13 @@ import com.example.fady.uspets.ApplicationDI.ApplicationComponent;
 import com.example.fady.uspets.MainScreenModule.AdvertismentModule.AdvertisementFragment;
 import com.example.fady.uspets.MainScreenModule.CreateAdModule.CreateAdFragment;
 import com.example.fady.uspets.PersonalAdModule.PersonalAdActivity;
-import com.example.fady.uspets.PersonalAdModule.PersonalAdPresenter;
 import com.example.fady.uspets.PetDetailsModule.PetDetailsActiviy;
 import com.example.fady.uspets.RegistrationModule.RegistrationActivity;
 import com.example.fady.uspets.SplashScreen.SplashScreenActivity;
+import com.example.fady.uspets.chatModule.ChatActivity;
+import com.example.fady.uspets.messagesModule.MessagesActivity;
 import com.example.fady.uspets.myAdvertisement.MyAdvertisementActivity;
-import com.example.fady.uspets.profilemodule.ProfileActivity;
+import com.example.fady.uspets.profileModule.ProfileActivity;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -31,7 +32,9 @@ public interface ControllerComponent {
 
     void inject(PetDetailsActiviy petDetailsActiviy);
 
+    void inject(ChatActivity chatActivity);
 
+    void inject(MessagesActivity messagesActivity);
 
     void inject(PersonalAdActivity personalAdActivity);
 

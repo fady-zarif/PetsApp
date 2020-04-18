@@ -6,8 +6,8 @@
     android:layout_height="match_parent"
     android:background="@color/background"
     android:orientation="vertical"
-    android:padding="40dp"
-    tools:context=".profilemodule.ProfileActivity">
+    android:padding="34dp"
+    tools:context=".profileModule.ProfileActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -20,10 +20,11 @@
         android:paddingBottom="70dp">
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="40dp">
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="10dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -33,19 +34,28 @@
                 android:textSize="@dimen/profile_text_size"
                 android:textStyle="bold" />
 
-            <com.rengwuxian.materialedittext.MaterialEditText
+            <TextView
                 android:id="@+id/tvUserName"
-                android:layout_width="wrap_content"
+
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
+                android:background="@android:color/darker_gray"
+                android:paddingLeft="8dp"
+                android:paddingTop="5dp"
+                android:paddingRight="8dp"
+                android:paddingBottom="5dp"
+                android:textColor="@color/color_black_main"
+
                 android:textSize="@dimen/text_size" />
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="15dp">
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="10dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -55,19 +65,26 @@
                 android:textSize="@dimen/profile_text_size"
                 android:textStyle="bold" />
 
-            <com.rengwuxian.materialedittext.MaterialEditText
+            <TextView
                 android:id="@+id/tvUserEmail"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
+                android:background="@android:color/darker_gray"
+                android:paddingLeft="8dp"
+                android:paddingTop="5dp"
+                android:paddingRight="8dp"
+                android:paddingBottom="5dp"
+                android:textColor="@color/color_black_main"
                 android:textSize="@dimen/text_size" />
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="15dp">
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="10dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -77,11 +94,18 @@
                 android:textSize="@dimen/profile_text_size"
                 android:textStyle="bold" />
 
-            <com.rengwuxian.materialedittext.MaterialEditText
+            <TextView
                 android:id="@+id/tvUserPhone"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
+
+                android:background="@android:color/darker_gray"
+                android:paddingLeft="8dp"
+                android:paddingTop="5dp"
+                android:paddingRight="8dp"
+                android:paddingBottom="5dp"
+                android:textColor="@color/color_black_main"
                 android:textSize="@dimen/text_size" />
         </LinearLayout>
 
@@ -103,13 +127,6 @@
             app:civ_border_color="#FF000000"
             app:civ_border_width="2dp" />
 
-        <ImageView
-            android:id="@+id/imgPickPhoto"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_alignParentRight="true"
-            android:src="@drawable/ic_camera"
-            android:visibility="gone" />
 
     </RelativeLayout>
 

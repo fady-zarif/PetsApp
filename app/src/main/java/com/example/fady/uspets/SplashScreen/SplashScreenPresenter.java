@@ -11,7 +11,9 @@ import androidx.annotation.NonNull;
 import com.example.fady.uspets.FirebaseDatabase.FirebaseUserClass;
 import com.example.fady.uspets.FirebaseDatabase.SharedPreference.SharedPreferencesClass;
 
+import com.example.fady.uspets.Owner;
 import com.example.fady.uspets.RegistrationModule.UserManager;
+import com.example.fady.uspets.USPetsMain.IUSPetMain;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -21,7 +23,7 @@ import javax.inject.Inject;
 
 import static java.lang.Thread.sleep;
 
-public class SplashScreenPresenter extends UserManager implements ISplashScreen.ISplashPresenter {
+public class SplashScreenPresenter extends UserManager implements ISplashScreen.ISplashPresenter, IUSPetMain.IUserDataListner {
 
     ISplashScreen.ISpleashView iSpleashView;
     @Inject
@@ -69,8 +71,7 @@ public class SplashScreenPresenter extends UserManager implements ISplashScreen.
             @Override
             public void onComplete(@NonNull Task task) {
                 if (task.isSuccessful()) {
-                    getUserInfo();
-                    iSpleashView.startMainScreenActivity();
+                    getUserInfo(SplashScreenPresenter.this);
                 } else {
                     iSpleashView.startRegistrationActivity();
                 }
@@ -78,4 +79,13 @@ public class SplashScreenPresenter extends UserManager implements ISplashScreen.
         });
     }
 
+    @Override
+    public void onUserDataSuccess(Owner owner) {
+        iSpleashView.startMainScreenActivity();
+    }
+
+    @Override
+    public void onUserDataFailed(String message) {
+        iSpleashView.startRegistrationActivity();
+    }
 }

@@ -46,7 +46,8 @@ import io.reactivex.rxjava3.disposables.Disposable;
 import io.reactivex.rxjava3.functions.Function;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 
-import static com.example.fady.uspets.MainScreenModule.CreateAdModule.CreateAdConstant.PET_IMAGES_FOLDER;
+import static com.example.fady.uspets.FirebaseDatabase.FirebaseConstant.PET_IMAGES_FOLDER;
+
 
 public class CreateAdPresenter implements ICreateAd.IPresenter {
     ICreateAd.IView iView;

@@ -51,18 +51,18 @@ public class AdvertisementPresenter implements IAdvertisement.IAdvertismentPrese
     }
 
     @Override
-    public void getAdvertisment() {
+    public void getAdvertisement() {
         advertisementModelArrayList = new ArrayList<>();
         firebaseAdvertismentClass.getAdvertismentList(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
                 if (e != null) {
-                    iAdvertismentView.onRetriveAdvertismentsFailed(e.getLocalizedMessage()
+                    iAdvertismentView.onRetrieveAdvertisementsFailed(e.getLocalizedMessage()
                     );
                     return;
                 }
                 if (queryDocumentSnapshots.getDocumentChanges().size() == 0) {// TODO: 2020-01-07 move to string file
-                    iAdvertismentView.onRetriveAdvertismentsFailed("No Data");
+                    iAdvertismentView.onRetrieveAdvertisementsFailed("No Data");
                     return;
                 }
 //                if (!queryDocumentSnapshots.getMetadata().isFromCache()) {
@@ -71,7 +71,7 @@ public class AdvertisementPresenter implements IAdvertisement.IAdvertismentPrese
                     if (documentChange.getType().equals(DocumentChange.Type.ADDED)) {
                         AdvertisementModel advertisementModel = documentChange.getDocument().toObject(AdvertisementModel.class);
 //                        getUserInfo(advertisementModel);
-                        iAdvertismentView.onRetriveAdvertismentsSuccess(advertisementModel);
+                        iAdvertismentView.onRetrieveAdvertisementsSuccess(advertisementModel);
                     }
                 }
 
@@ -99,7 +99,7 @@ public class AdvertisementPresenter implements IAdvertisement.IAdvertismentPrese
                 if (task.isSuccessful()) {
                     for (DocumentSnapshot documentSnapshot : task.getResult().getDocuments()) {
                         AdvertisementModel advertisementModel = documentSnapshot.toObject(AdvertisementModel.class);
-                        iAdvertismentView.onRetriveAdvertismentsSuccess(advertisementModel);
+                        iAdvertismentView.onRetrieveAdvertisementsSuccess(advertisementModel);
                     }
                 }
             }

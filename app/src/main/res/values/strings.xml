@@ -180,4 +180,5 @@
     
     // AdActivityDetails
     <string name="messageDialogHint">Message.. </string>
+    <string name="todo">TODO</string>
 </resources>

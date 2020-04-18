@@ -5,6 +5,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 
 import javax.inject.Singleton;
 
@@ -21,6 +22,10 @@ public class FirebaseChatClass extends FirebaseBase {
 
     public void updateUserWithMessages(MessageModel messageModel) {
 
+    }
+
+    public Query getChatFromChannel(String channelId) {
+        return getFirebaseChatRef().document(channelId).collection(CHAT_MESSAGES_REFEREMCE).orderBy("time");
     }
 
     public String getNewDocument() {

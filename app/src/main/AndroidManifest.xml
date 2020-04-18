@@ -8,14 +8,19 @@
 
     <application
         android:name=".PetApp"
-        android:allowBackup="true"
+        android:hardwareAccelerated="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:largeHeap="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".messagesModule.MessagesActivity"></activity>
-        <activity android:name=".chatModule.ChatActivity" />
+        <activity
+            android:name=".messagesModule.MessagesActivity"
+            android:theme="@style/profileToolbarStyle" />
+        <activity
+            android:name=".chatModule.ChatActivity"
+            android:theme="@style/profileToolbarStyle" />
         <activity
             android:name=".myAdvertisement.MyAdvertisementActivity"
             android:parentActivityName=".MainScreenModule.MainScreenActivity"
@@ -28,7 +33,7 @@
             android:name=".PetDetailsModule.PetDetailsActiviy"
             android:parentActivityName=".MainScreenModule.MainScreenActivity" />
         <activity
-            android:name=".profilemodule.ProfileActivity"
+            android:name=".profileModule.ProfileActivity"
             android:parentActivityName=".MainScreenModule.MainScreenActivity"
             android:theme="@style/profileToolbarStyle" />
         <activity
